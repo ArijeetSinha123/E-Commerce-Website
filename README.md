@@ -34,9 +34,3 @@ Clone repo
 Import into NetBeans/Eclipse
 Configure MySQL DB
 Run on Tomcat server
-
-Ecommerce Website by Java web application
-hmm
-hiii 
-Commit hou plssssssssss
-:)
