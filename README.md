@@ -2,11 +2,12 @@
 [[PUT E COMMERCE WEBSITE NAME HERE]]
 
 
+
 ### 📌 Overview -
 
 We are building [[blank]] a Java-based e-commerce web application built using MVC architecture.<br> It allows users to browse products, manage carts, and place orders.
 
-<br>
+
 
 ### 🚀 Features -
 
@@ -16,7 +17,7 @@ We are building [[blank]] a Java-based e-commerce web application built using MV
 -Order Placement <br>
 -Admin Panel <br>
 
-<br>
+
 
 ### 🛠️ Tech Stack -
 
@@ -25,7 +26,7 @@ Backend: Java Servlets <br>
 Database: MySQL <br>
 Server: Apache Tomcat <br>
 
-<br>
+
 
 ### 📂 Project Structure (Tentative) -
 
@@ -79,7 +80,7 @@ E-Commerce-Website/
 
 ```
 
-<br>
+
 
 ### ⚙️ Setup Instructions -
 
@@ -87,5 +88,3 @@ E-Commerce-Website/
 -Import into VS Code <br>
 -Configure MySQL DB <br>
 -Run on Tomcat server
-
-<br>
