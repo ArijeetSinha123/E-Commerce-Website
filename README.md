@@ -1,7 +1,6 @@
 [[README NOT COMPLETE]] <br>
 [[PUT E COMMERCE WEBSITE NAME HERE]]
 
-<br>
 
 ### 📌 Overview -
 
