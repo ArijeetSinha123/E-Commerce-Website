@@ -26,7 +26,7 @@ Server: Apache Tomcat
 
 📂 Project Structure (Tentative) -
 
-E-Commerce-Website/
+'''E-Commerce-Website/
 │
 ├── index.jsp                ← Home / entry page
 │
@@ -72,7 +72,7 @@ E-Commerce-Website/
 │
 ├── database/
 │   └── schema.sql
-
+'''
 
 
 ⚙️ Setup Instructions -
