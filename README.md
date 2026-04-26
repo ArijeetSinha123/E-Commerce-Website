@@ -10,17 +10,17 @@ We are building [[blank]] a Java-based e-commerce web application built using MV
 
 ### 🚀 Features -
 
--User Registration & Login
--Product Browsing & Search
--Cart Management
--Order Placement
--Admin Panel
+-User Registration & Login <br>
+-Product Browsing & Search <br>
+-Cart Management <br>
+-Order Placement <br>
+-Admin Panel <br>
 
 
 
 ### 🛠️ Tech Stack -
 
-Frontend: JSP, HTML, CSS, JS
+Frontend: JSP, HTML, CSS, JS <br>
 Backend: Java Servlets
 Database: MySQL
 Server: Apache Tomcat
