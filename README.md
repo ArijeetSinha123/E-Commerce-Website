@@ -7,6 +7,7 @@
 We are building [[blank]] a Java-based e-commerce web application built using MVC architecture. It allows users to browse products, manage carts, and place orders.
 
 
+
 🚀 Features -
 
 User Registration & Login
@@ -14,6 +15,7 @@ Product Browsing & Search
 Cart Management
 Order Placement
 Admin Panel
+
 
 
 🛠️ Tech Stack -
@@ -24,9 +26,10 @@ Database: MySQL
 Server: Apache Tomcat
 
 
+
 📂 Project Structure (Tentative) -
 
-'''E-Commerce-Website/
+E-Commerce-Website/
 │
 ├── index.jsp                ← Home / entry page
 │
@@ -36,43 +39,43 @@ Server: Apache Tomcat
 │   ├── products.jsp
 │   ├── cart.jsp
 │   ├── checkout.jsp
-│   ├── orders.jsp
+│   └── orders.jsp
 │
-├── css/                     ← styles
+├── css/                     ← Stylesheets
 │   └── style.css
 │
-├── js/                      ← scripts
+├── js/                      ← JavaScript files
 │   └── script.js
 │
-├── images/                  ← product images
+├── images/                  ← Product and UI images
 │
-├── WEB-INF/
-│   ├── web.xml              ← config
-│   └── lib/
+├── WEB-INF/                 
+│   ├── web.xml              ← Deployment Descriptor
+│   └── lib/                 ← External Libraries
 │       └── mysql-connector-j.jar
 │
-├── src/                     ← ALL Java code (backend)
-│   ├── controller/
+├── src/                     ← Backend Logic (Java)
+│   ├── controller/          ← Servlets (Control Flow)
 │   │   ├── AuthController.java
 │   │   ├── ProductController.java
-│   │   ├── CartController.java
-│
-│   ├── dao/
+│   │   └── CartController.java
+│   │
+│   ├── dao/                 ← Data Access Objects (JDBC)
 │   │   ├── UserDAO.java
 │   │   ├── ProductDAO.java
-│   │   ├── CartDAO.java
-│
-│   ├── model/
+│   │   └── CartDAO.java
+│   │
+│   ├── model/               ← POJOs / Entities
 │   │   ├── User.java
 │   │   ├── Product.java
-│   │   ├── Cart.java
+│   │   └── Cart.java
+│   │
+│   └── util/                ← Utilities (DB Connection)
+│       └── DBConnection.java
 │
-│   ├── util/
-│   │   ├── DBConnection.java
-│
-├── database/
-│   └── schema.sql
-'''
+└── database/
+    └── schema.sql           ← SQL script for DB setup
+
 
 
 ⚙️ Setup Instructions -
