@@ -21,11 +21,12 @@ We are building [[blank]] a Java-based e-commerce web application built using MV
 
 ### 🛠️ Tech Stack -
 
-Frontend: JSP, HTML, CSS, JS <br>
-Backend: Java Servlets <br>
-Database: MySQL <br>
-Server: Apache Tomcat <br>
-
+**Backend**: Java (Servlets, JSP) <br>
+**Frontend**: HTML, CSS, JavaScript <br>
+**Server**: Apache Tomcat <br>
+**Database**: MySQL <br>
+**Architecture**: MVC <br>
+**AI (Optional)**: Python / Java-based logic (separate module) <br>
 
 
 ### 📂 Project Structure (Tentative) -
