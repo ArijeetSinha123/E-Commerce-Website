@@ -11,11 +11,11 @@ We are building [[blank]] a Java-based e-commerce web application built using MV
 
 ### 🚀 Features -
 
--User Registration & Login <br>
--Product Browsing & Search <br>
--Cart Management <br>
--Order Placement <br>
--Admin Panel <br>
+-**User Registration & Login** <br>
+-**Product Browsing & Search** <br>
+-**Cart Management** <br>
+-**Order Placement** <br>
+-**Admin Panel** <br>
 
 
 
@@ -36,7 +36,7 @@ E-Commerce-Website/
 │
 ├── index.jsp                ← Home / entry page
 │
-├── jsp/                     ← ALL frontend (View)
+├── view/                     ← ALL frontend (jsp/view)
 │   ├── login.jsp
 │   ├── register.jsp
 │   ├── products.jsp
@@ -85,7 +85,7 @@ E-Commerce-Website/
 
 ### ⚙️ Setup Instructions -
 
--Clone repo <br>
--Import into VS Code <br>
--Configure MySQL DB <br>
--Run on Tomcat server<br>
+-**Clone repo** <br>
+-**Import into VS Code** <br>
+-**Configure MySQL DB** <br>
+-**Run on Tomcat server**<br>
