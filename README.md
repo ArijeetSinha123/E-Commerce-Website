@@ -34,9 +34,13 @@ We are building [[blank]] a Java-based e-commerce web application built using MV
 ```
 E-Commerce-Website/
 │
-├── index.jsp                ← Home / entry page
+├── index.jsp                     ← Entry point (Home)
 │
+<<<<<<< HEAD
 ├── view/                    ← ALL frontend (jsp/view)
+=======
+├── view/                          ← Jsp layer 
+>>>>>>> 4ff4e08de08c9f35e5847d531db0329afdbe6f67
 │   ├── login.jsp
 │   ├── register.jsp
 │   ├── products.jsp
@@ -44,40 +48,44 @@ E-Commerce-Website/
 │   ├── checkout.jsp
 │   └── orders.jsp
 │
-├── css/                     ← Stylesheets
-│   └── style.css
+├── assets/                       ← Static files 
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── script.js
+│   └── images/
 │
-├── js/                      ← JavaScript files
-│   └── script.js
+├── WEB-INF/
+│   ├── web.xml                  ← Deployment descriptor
+│   ├── classes/                 ← compiled .class files (AUTO)
+│   └── lib/
+│       ├── mysql-connector-j.jar
+│       └── servlet-api.jar      (IMPORTANT for VS Code)
 │
-├── images/                  ← Product and UI images
-│
-├── WEB-INF/                 
-│   ├── web.xml              ← Deployment Descriptor
-│   └── lib/                 ← External Libraries
-│       └── mysql-connector-j.jar
-│
-├── src/                     ← Backend Logic (Java)
-│   ├── controller/          ← Servlets (Control Flow)
-│   │   ├── AuthController.java
+├── src/                         ← Backend (Java code)
+│   ├── controller/
+│   │   ├── LoginServlet.java
 │   │   ├── ProductController.java
 │   │   └── CartController.java
 │   │
-│   ├── dao/                 ← Data Access Objects (JDBC)
-│   │   ├── UserDAO.java
-│   │   ├── ProductDAO.java
-│   │   └── CartDAO.java
-│   │
-│   ├── model/               ← POJOs / Entities
+│   ├── model/
 │   │   ├── User.java
 │   │   ├── Product.java
-│   │   └── Cart.java
+│   │   ├── Cart.java
 │   │
-│   └── util/                ← Utilities (DB Connection)
+│   │   └── dao/
+│   │       ├── UserDAO.java
+│   │       ├── ProductDAO.java
+│   │       └── CartDAO.java
+│   │
+│   └── util/
 │       └── DBConnection.java
 │
+├── .vscode/
+│   └── settings.json           ← (for library linking)
+│
 └── database/
-    └── schema.sql           ← SQL script for DB setup
+    └── schema.sql
 
 ``` 
 <br>
