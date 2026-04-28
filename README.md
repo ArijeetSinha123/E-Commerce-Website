@@ -36,7 +36,7 @@ E-Commerce-Website/
 │
 ├── index.jsp                ← Home / entry page
 │
-├── view/                     ← ALL frontend (jsp/view)
+├── view/                    ← ALL frontend (jsp/view)
 │   ├── login.jsp
 │   ├── register.jsp
 │   ├── products.jsp
