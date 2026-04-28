@@ -36,11 +36,7 @@ E-Commerce-Website/
 │
 ├── index.jsp                     ← Entry point (Home)
 │
-<<<<<<< HEAD
-├── view/                    ← ALL frontend (jsp/view)
-=======
-├── view/                          ← Jsp layer 
->>>>>>> 4ff4e08de08c9f35e5847d531db0329afdbe6f67
+├── view/                         ← View layer (jsp)
 │   ├── login.jsp
 │   ├── register.jsp
 │   ├── products.jsp
@@ -48,7 +44,7 @@ E-Commerce-Website/
 │   ├── checkout.jsp
 │   └── orders.jsp
 │
-├── assets/                       ← Static files 
+├── assets/                       ← Static files (better grouped)
 │   ├── css/
 │   │   └── style.css
 │   ├── js/
@@ -60,7 +56,7 @@ E-Commerce-Website/
 │   ├── classes/                 ← compiled .class files (AUTO)
 │   └── lib/
 │       ├── mysql-connector-j.jar
-│       └── servlet-api.jar      (IMPORTANT for VS Code)
+│       └── servlet-api.jar     (IMPORTANT for VS Code)
 │
 ├── src/                         ← Backend (Java code)
 │   ├── controller/
@@ -86,7 +82,6 @@ E-Commerce-Website/
 │
 └── database/
     └── schema.sql
-
 ``` 
 <br>
 
