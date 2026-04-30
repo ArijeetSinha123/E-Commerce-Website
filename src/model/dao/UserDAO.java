@@ -1,6 +1,6 @@
-package src.model.dao;
+package model.dao;
 
-import src.model.User;
+import model.User;
 
 public class UserDAO {
 
