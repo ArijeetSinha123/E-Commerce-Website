@@ -3,15 +3,14 @@ package controller;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import model.dao.UserDAO;
 import model.User;
 
-@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 
@@ -30,7 +29,7 @@ public class LoginServlet extends HttpServlet {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            throw new ServletException("Login failed", e);
         }
     }
 }

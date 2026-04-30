@@ -1,4 +1,4 @@
-<form action="../login" method="post">
+<form action="${pageContext.request.contextPath}/login" method="post">
 
     Email: <input type="text" name="email"><br><br>
     Password: <input type="password" name="password"><br><br>
