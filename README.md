@@ -5,7 +5,7 @@
 
 ### 📌 Overview -
 
-We are building [[blank]] a Java-based e-commerce web application built using MVC architecture. It allows users to browse products, manage carts, and place orders. <br>
+**We are building [[blank]] a Java-based e-commerce web application built using MVC architecture. It allows users to browse products, manage carts, and place orders.** <br>
 
 
 
