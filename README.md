@@ -34,57 +34,74 @@
 ```
 E-Commerce-Website/
 │
-├── index.jsp                     ← Entry point (Home)
+├── index.jsp                     ← Entry point / Home page [CURRENT]
 │
-├── view/                         ← View layer (jsp)
-│   ├── login.jsp
-│   ├── register.jsp
-│   ├── products.jsp
-│   ├── cart.jsp
-│   ├── checkout.jsp
-│   └── orders.jsp
+├── View/                         ← View layer - JSP pages
+│   ├── login.jsp                 ← Login page [CURRENT]
+│   ├── register.jsp              ← Registration page [CURRENT]
+│   ├── products.jsp              ← Product listing page [PLANNED]
+│   ├── cart.jsp                  ← Shopping cart page [PLANNED]
+│   ├── checkout.jsp              ← Checkout page [PLANNED]
+│   └── orders.jsp                ← Order history page [PLANNED]
 │
-├── assets/                       ← Static files (better grouped)
+├── assets/                       ← Static files [PLANNED]
 │   ├── css/
-│   │   └── style.css
+│   │   └── style.css             ← Main stylesheet [PLANNED]
 │   ├── js/
-│   │   └── script.js
-│   └── images/
+│   │   └── script.js             ← Main JavaScript file [PLANNED]
+│   └── images/                   ← Product/UI images [PLANNED]
 │
 ├── WEB-INF/
-│   ├── web.xml                  ← Deployment descriptor
-│   ├── classes/                 ← compiled .class files (AUTO)
-│   └── lib/
-│       ├── mysql-connector-j.jar
-│       └── servlet-api.jar     (IMPORTANT for VS Code)
+│   ├── web.xml                   ← Servlet configuration [CURRENT]
+│   ├── classes/                  ← Compiled .class files [AUTO-GENERATED]
+│   │   ├── controller/
+│   │   │   ├── LoginServlet.class
+│   │   │   └── RegisterServlet.class
+│   │   └── model/
+│   │       ├── User.class
+│   │       └── dao/
+│   │           └── UserDAO.class
+│   └── lib/                      ← External JAR files [PLANNED]
+│       └── mysql-connector-j.jar ← MySQL JDBC driver [PLANNED]
 │
-├── src/                         ← Backend (Java code)
+├── src/                          ← Backend Java source code
 │   ├── controller/
-│   │   ├── LoginServlet.java
-│   │   ├── ProductController.java
-│   │   └── CartController.java
+│   │   ├── LoginServlet.java     ← Handles login requests [CURRENT]
+│   │   ├── RegisterServlet.java  ← Handles registration requests [CURRENT]
+│   │   ├── ProductController.java← Handles product requests [PLANNED]
+│   │   └── CartController.java   ← Handles cart requests [PLANNED]
 │   │
 │   ├── model/
-│   │   ├── User.java
-│   │   ├── Product.java
-│   │   ├── Cart.java
-│   │
+│   │   ├── User.java             ← User model [CURRENT]
+│   │   ├── Product.java          ← Product model [PLANNED]
+│   │   ├── Cart.java             ← Cart model [PLANNED]
 │   │   └── dao/
-│   │       ├── UserDAO.java
-│   │       ├── ProductDAO.java
-│   │       └── CartDAO.java
+│   │       ├── UserDAO.java      ← User data/login logic [CURRENT]
+│   │       ├── ProductDAO.java   ← Product database logic [PLANNED]
+│   │       └── CartDAO.java      ← Cart database logic [PLANNED]
 │   │
 │   └── util/
-│       └── DBConnection.java
+│       └── DBConnection.java     ← Database connection helper [PLANNED]
 │
 ├── .vscode/
-│   └── settings.json           ← (for library linking)
+│   ├── settings.json             ← VS Code Java/Tomcat library setup [CURRENT]
+│   ├── launch.json               ← Local browser launch config [LOCAL]
+│   └── ecommerce.xml             ← Local Tomcat context config [LOCAL]
 │
-└── database/
-    └── schema.sql
-```
+├── database/
+│   └── schema.sql                ← Database schema [CURRENT]
+│
+├── .gitignore                    ← Git ignored files [CURRENT]
+└── README.md                     ← Project documentation [CURRENT]
+
 <br>
 
+Note: WEB-INF/classes contains compiled .class files generated from the Java source files. 
+The main source code is inside the src/ folder. <br>
+
+Note: .vscode/ecommerce.xml may contain a local system path, so each developer should configure it according to their own machine. <br>
+
+```
 
 ### ⚙️ Setup Instructions -
 
