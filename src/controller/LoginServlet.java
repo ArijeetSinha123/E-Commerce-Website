@@ -2,8 +2,8 @@ package controller;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.*;
 
 import model.dao.UserDAO;
 import model.User;
