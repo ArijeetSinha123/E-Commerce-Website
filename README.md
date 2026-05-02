@@ -34,11 +34,11 @@
 ```
 E-Commerce-Website/
 │
-├── index.jsp                     ← Entry point / Home page [CURRENT]
+├── index.jsp                     ← Entry point / Home page 
 │
 ├── View/                         ← View layer - JSP pages
-│   ├── login.jsp                 ← Login page [CURRENT]
-│   ├── register.jsp              ← Registration page [CURRENT]
+│   ├── login.jsp                 ← Login page 
+│   ├── register.jsp              ← Registration page 
 │   ├── products.jsp              ← Product listing page [PLANNED]
 │   ├── cart.jsp                  ← Shopping cart page [PLANNED]
 │   ├── checkout.jsp              ← Checkout page [PLANNED]
@@ -61,22 +61,22 @@ E-Commerce-Website/
 │   │       ├── User.class
 │   │       └── dao/
 │   │           └── UserDAO.class
-│   └── lib/                      ← External JAR files [PLANNED]
-│       └── mysql-connector-j.jar ← MySQL JDBC driver [PLANNED]
+│   └── lib/                      ← External JAR files 
+│       └── mysql-connector-j.jar ← MySQL JDBC driver 
 │
 ├── src/                          ← Backend Java source code
 │   ├── controller/
-│   │   ├── LoginServlet.java     ← Handles login requests [CURRENT]
-│   │   ├── RegisterServlet.java  ← Handles registration requests [CURRENT]
+│   │   ├── LoginServlet.java     ← Handles login requests 
+│   │   ├── RegisterServlet.java  ← Handles registration requests 
 │   │   ├── ProductController.java← Handles product requests [PLANNED]
 │   │   └── CartController.java   ← Handles cart requests [PLANNED]
 │   │
 │   ├── model/
-│   │   ├── User.java             ← User model [CURRENT]
+│   │   ├── User.java             ← User model 
 │   │   ├── Product.java          ← Product model [PLANNED]
 │   │   ├── Cart.java             ← Cart model [PLANNED]
 │   │   └── dao/
-│   │       ├── UserDAO.java      ← User data/login logic [CURRENT]
+│   │       ├── UserDAO.java      ← User data/login logic 
 │   │       ├── ProductDAO.java   ← Product database logic [PLANNED]
 │   │       └── CartDAO.java      ← Cart database logic [PLANNED]
 │   │
@@ -84,15 +84,15 @@ E-Commerce-Website/
 │       └── DBConnection.java     ← Database connection helper [PLANNED]
 │
 ├── .vscode/
-│   ├── settings.json             ← VS Code Java/Tomcat library setup [CURRENT]
+│   ├── settings.json             ← VS Code Java/Tomcat library setup [LOCAL]
 │   ├── launch.json               ← Local browser launch config [LOCAL]
 │   └── ecommerce.xml             ← Local Tomcat context config [LOCAL]
 │
 ├── database/
 │   └── schema.sql                ← Database schema [CURRENT]
 │
-├── .gitignore                    ← Git ignored files [CURRENT]
-└── README.md                     ← Project documentation [CURRENT]
+├── .gitignore                    ← Git ignored files 
+└── README.md                     ← Project documentation 
 
 <br>
 
