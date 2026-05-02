@@ -1,1 +1,18 @@
-.vscode/ecommerce.xml
+# Compiled Java files
+*.class
+WEB-INF/classes/
+
+# Build folders
+bin/
+build/
+dist/
+
+# IDE files
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
