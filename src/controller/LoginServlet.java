@@ -17,6 +17,11 @@ public class LoginServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
+        if (isBlank(email) || isBlank(password)) {
+            res.sendRedirect(req.getContextPath() + "/View/login.jsp?error=empty");
+            return;
+        }
+
         try {
             UserDAO dao = new UserDAO();
             User user = dao.login(email, password);
@@ -31,5 +36,9 @@ public class LoginServlet extends HttpServlet {
         } catch (Exception e) {
             throw new ServletException("Login failed", e);
         }
+    }
+
+    private boolean isBlank(String value) {
+        return value == null || value.trim().isEmpty();
     }
 }
