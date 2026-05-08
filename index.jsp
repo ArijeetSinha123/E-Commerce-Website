@@ -12,7 +12,8 @@
     <% } %>
 
     <% if (user != null) { %>
-        <p>You are logged in as <%= user.getEmail() %>.</p>
+        <h2>Welcome, <%= user.getName() %></h2>
+        <p>You are logged in with <%= user.getEmail() %>.</p>
     <% } else { %>
         <a href="View/login.jsp">Login</a>
         <a href="View/register.jsp">Register</a>
