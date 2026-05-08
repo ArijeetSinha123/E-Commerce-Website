@@ -9,6 +9,7 @@ import model.User;
 import model.dao.UserDAO;
 
 public class RegisterServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
@@ -44,7 +45,7 @@ public class RegisterServlet extends HttpServlet {
                 res.sendRedirect(req.getContextPath() + "/View/register.jsp?error=1");
             }
         } catch (Exception e) {
-            throw new ServletException("Registration failed", e);
+            res.sendRedirect(req.getContextPath() + "/View/register.jsp?error=server");
         }
     }
 

@@ -9,6 +9,7 @@ import model.dao.UserDAO;
 import model.User;
 
 public class LoginServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
@@ -28,13 +29,13 @@ public class LoginServlet extends HttpServlet {
 
             if (user != null) {
                 req.getSession().setAttribute("user", user);
-                res.sendRedirect(req.getContextPath() + "/index.jsp");
+                res.sendRedirect(req.getContextPath() + "/index.jsp?login=success");
             } else {
                 res.sendRedirect(req.getContextPath() + "/View/login.jsp?error=1");
             }
 
         } catch (Exception e) {
-            throw new ServletException("Login failed", e);
+            res.sendRedirect(req.getContextPath() + "/View/login.jsp?error=server");
         }
     }
 

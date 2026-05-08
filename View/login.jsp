@@ -13,6 +13,8 @@
     <p style="color: red;">Please enter email and password.</p>
 <% } else if ("1".equals(error)) { %>
     <p style="color: red;">Invalid email or password.</p>
+<% } else if ("server".equals(error)) { %>
+    <p style="color: red;">Something went wrong while logging in. Please try again.</p>
 <% } %>
 
 <form action="${pageContext.request.contextPath}/login" method="post">

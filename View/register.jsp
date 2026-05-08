@@ -10,6 +10,8 @@
     <p style="color: red;">Password and confirm password do not match.</p>
 <% } else if ("1".equals(error)) { %>
     <p style="color: red;">Registration failed. This email may already be registered.</p>
+<% } else if ("server".equals(error)) { %>
+    <p style="color: red;">Something went wrong while creating your account. Please try again.</p>
 <% } %>
 
 <form action="${pageContext.request.contextPath}/register" method="post">
