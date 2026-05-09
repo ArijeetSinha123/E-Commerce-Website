@@ -109,3 +109,13 @@ Note: .vscode/ecommerce.xml may contain a local system path, so each developer s
 -**Import into VS Code** <br>
 -**Configure MySQL DB** <br>
 -**Run on Tomcat server**<br>
+
+---
+
+### Current Development Update -
+
+- Product browsing, search, cart, checkout, and order history flow added. <br>
+- Basic admin panel added for product management and order status updates. <br>
+- Admin route starts at `/admin/dashboard`. <br>
+- Default admin seed in `database/schema.sql`: `admin@example.com` / `admin123`. <br>
+- Run `database/schema.sql` again before testing the new product/order/admin features. <br>
