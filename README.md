@@ -68,7 +68,7 @@ E-Commerce-Website/
 │   ├── controller/
 │   │   ├── LoginServlet.java     ← Handles login requests 
 │   │   ├── RegisterServlet.java  ← Handles registration requests 
-│   │   ├── ProductController.java← Handles product requests [PLANNED]
+│   │   ├── ProductController.java← Handles product requests
 │   │   └── CartController.java   ← Handles cart requests [PLANNED]
 │   │
 │   ├── model/
@@ -81,12 +81,12 @@ E-Commerce-Website/
 │   │       └── CartDAO.java      ← Cart database logic [PLANNED]
 │   │
 │   └── util/
-│       └── DBConnection.java     ← Database connection helper [PLANNED]
+│       └── DBConnection.java     ← Database connection helper 
 │
 ├── .vscode/
-│   ├── settings.json             ← VS Code Java/Tomcat library setup [LOCAL]
-│   ├── launch.json               ← Local browser launch config [LOCAL]
-│   └── ecommerce.xml             ← Local Tomcat context config [LOCAL]
+│   ├── settings.json             ← VS Code Java/Tomcat library 
+│   ├── launch.json               ← Local browser launch config 
+│   └── ecommerce.xml             ← Local Tomcat context confi
 │
 ├── database/
 │   └── schema.sql                ← Database schema [CURRENT]
@@ -109,3 +109,18 @@ Note: .vscode/ecommerce.xml may contain a local system path, so each developer s
 -**Import into VS Code** <br>
 -**Configure MySQL DB** <br>
 -**Run on Tomcat server**<br>
+
+---
+
+### Current Additions (9/5/26)-
+
+- Product listing, cart, checkout, and order history pages have been added. <br>
+- Product, cart item, and order model/DAO/controller classes have been added. <br>
+- `database/schema.sql` now includes product, order, and order item tables with sample products. <br>
+- `WEB-INF/web.xml` now includes servlet mappings for products, cart, checkout, and orders. <br>
+
+### Immediate Next Steps -
+
+- Run `database/schema.sql` in MySQL. <br>
+- Start Tomcat and test: Register/Login -> Products -> Add to Cart -> Checkout -> Orders. <br>
+- After this, add product images, admin product CRUD, password hashing, and stock reduction during checkout. <br>
