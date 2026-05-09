@@ -38,7 +38,7 @@
 
         <section class="product-grid">
             <% if (products == null || products.isEmpty()) { %>
-                <p>No products found. Run the SQL schema first.</p>
+                <p>No products found.</p>
             <% } else { %>
                 <% for (Product product : products) { %>
                     <article class="card">
