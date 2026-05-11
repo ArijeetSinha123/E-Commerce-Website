@@ -1,113 +1,124 @@
-# [[PUT E COMMERCE WEBSITE NAME HERE]]<br>
+# E-Commerce Website<br>
 
 
 [[README NOT COMPLETE]] <br>
 
-### 📌 Overview -
+### Overview -
 
-**We are building [[blank]] a Java-based e-commerce web application built using MVC architecture. It allows users to browse products, manage carts, and place orders.** <br>
+**We are building a Java-based e-commerce web application using MVC architecture. It allows users to browse products, manage carts, place orders, and lets admins manage products and order statuses.** <br>
 
 
 
-### 🚀 Features -
+### Features -
 
 -**User Registration & Login** <br>
 -**Product Browsing & Search** <br>
 -**Cart Management** <br>
 -**Order Placement** <br>
--**Admin Panel** <br>
+-**Order History & Cancellation** <br>
+-**Admin Login** <br>
+-**Admin Product Management** <br>
+-**Admin Order Status Management** <br>
 
 
 
-### 🛠️ Tech Stack -
+### Tech Stack -
 
 **Backend**: Java (Servlets, JSP) <br>
 **Frontend**: HTML, CSS, JavaScript <br>
 **Server**: Apache Tomcat <br>
 **Database**: MySQL <br>
 **Architecture**: MVC <br>
-**AI (Optional)**: Python / Java-based logic (separate module) <br>
 
 
-### 📂 Project Structure (Tentative) -
+### Project Structure -
 
 ```
 E-Commerce-Website/
 │
-├── index.jsp                     ← Entry point / Home page 
+├── index.jsp                              ← Entry point / Home page
 │
-├── View/                         ← View layer - JSP pages
-│   ├── login.jsp                 ← Login page 
-│   ├── register.jsp              ← Registration page 
-│   ├── products.jsp              ← Product listing page [PLANNED]
-│   ├── cart.jsp                  ← Shopping cart page [PLANNED]
-│   ├── checkout.jsp              ← Checkout page [PLANNED]
-│   └── orders.jsp                ← Order history page [PLANNED]
+├── View/                                  ← View layer - JSP pages
+│   ├── login.jsp                          ← User login page
+│   ├── register.jsp                  ← User registration page
+│   ├── products.jsp                  ← Product listing and search page
+│   ├── cart.jsp                      ← Shopping cart page
+│   ├── checkout.jsp                  ← Checkout / place order page
+│   ├── orders.jsp                    ← User order history page
+│   │
+│   └── admin/                        ← Admin panel JSP pages
+│       ├── login.jsp                 ← Admin login page
+│       ├── dashboard.jsp             ← Admin dashboard page
+│       ├── products.jsp              ← Admin product management page
+│       ├── product-form.jsp          ← Add/Edit product form
+│       └── orders.jsp                ← Admin order management page
 │
-├── assets/                       ← Static files [PLANNED]
+├── assets/                           ← Static files
 │   ├── css/
-│   │   └── style.css             ← Main stylesheet [PLANNED]
-│   ├── js/
-│   │   └── script.js             ← Main JavaScript file [PLANNED]
-│   └── images/                   ← Product/UI images [PLANNED]
+│   │   └── style.css                 ← Main stylesheet
+│   └── js/
+│       └── script.js                 ← Main JavaScript file
 │
 ├── WEB-INF/
-│   ├── web.xml                   ← Servlet configuration [CURRENT]
-│   ├── classes/                  ← Compiled .class files [AUTO-GENERATED]
-│   │   ├── controller/
-│   │   │   ├── LoginServlet.class
-│   │   │   └── RegisterServlet.class
-│   │   └── model/
-│   │       ├── User.class
-│   │       └── dao/
-│   │           └── UserDAO.class
-│   └── lib/                      ← External JAR files 
-│       └── mysql-connector-j.jar ← MySQL JDBC driver 
+│   ├── web.xml                       ← Servlet configuration and URL mappings
+│   └── lib/                          ← External JAR files
+│       └── mysql-connector-j-9.7.0.jar ← MySQL JDBC driver
 │
-├── src/                          ← Backend Java source code
-│   ├── controller/
-│   │   ├── LoginServlet.java     ← Handles login requests 
-│   │   ├── RegisterServlet.java  ← Handles registration requests 
-│   │   ├── ProductController.java← Handles product requests [PLANNED]
-│   │   └── CartController.java   ← Handles cart requests [PLANNED]
+├── src/                              ← Backend Java source code
+│   ├── controller/                   ← Servlet controllers
+│   │   ├── LoginServlet.java         ← Handles user login requests
+│   │   ├── RegisterServlet.java      ← Handles user registration requests
+│   │   ├── LogoutServlet.java        ← Handles user logout requests
+│   │   ├── ProductController.java    ← Handles product listing/search requests
+│   │   ├── CartController.java       ← Handles cart add/update/remove requests
+│   │   ├── CheckoutServlet.java      ← Handles checkout and order placement
+│   │   ├── OrdersServlet.java        ← Handles user order history and cancellation
+│   │   ├── AdminAuth.java            ← Checks admin session authentication
+│   │   ├── AdminLoginServlet.java    ← Handles admin login requests
+│   │   ├── AdminLogoutServlet.java   ← Handles admin logout requests
+│   │   ├── AdminDashboardServlet.java← Handles admin dashboard statistics
+│   │   ├── AdminProductServlet.java  ← Handles admin product CRUD operations
+│   │   └── AdminOrderServlet.java    ← Handles admin order status updates
 │   │
-│   ├── model/
-│   │   ├── User.java             ← User model 
-│   │   ├── Product.java          ← Product model [PLANNED]
-│   │   ├── Cart.java             ← Cart model [PLANNED]
-│   │   └── dao/
-│   │       ├── UserDAO.java      ← User data/login logic 
-│   │       ├── ProductDAO.java   ← Product database logic [PLANNED]
-│   │       └── CartDAO.java      ← Cart database logic [PLANNED]
+│   ├── model/                        ← Model classes
+│   │   ├── User.java                 ← User model
+│   │   ├── Admin.java                ← Admin model
+│   │   ├── Product.java              ← Product model
+│   │   ├── CartItem.java             ← Session cart item model
+│   │   ├── Order.java                ← Order model
+│   │   │
+│   │   └── dao/                      ← Database access classes
+│   │       ├── UserDAO.java          ← User registration and login database logic
+│   │       ├── AdminDAO.java         ← Admin login database logic
+│   │       ├── ProductDAO.java       ← Product database CRUD/search logic
+│   │       └── OrderDAO.java         ← Order creation, listing, cancellation, status logic
 │   │
 │   └── util/
-│       └── DBConnection.java     ← Database connection helper [PLANNED]
-│
-├── .vscode/
-│   ├── settings.json             ← VS Code Java/Tomcat library setup [LOCAL]
-│   ├── launch.json               ← Local browser launch config [LOCAL]
-│   └── ecommerce.xml             ← Local Tomcat context config [LOCAL]
+│       └── DBConnection.java         ← MySQL database connection helper
 │
 ├── database/
-│   └── schema.sql                ← Database schema [CURRENT]
+│   └── schema.sql                    ← Database schema and seed data
 │
-├── .gitignore                    ← Git ignored files 
-└── README.md                     ← Project documentation 
+├── .vscode/                          ← VS Code / local Tomcat configuration
+│
+├── .gitignore                        ← Git ignored files
+└── README.md                         ← Project documentation
+```
 
 <br>
 
-Note: WEB-INF/classes contains compiled .class files generated from the Java source files. 
+Note: WEB-INF/classes contains compiled .class files generated from the Java source files when the project is built or deployed.
 The main source code is inside the src/ folder. <br>
 
 Note: .vscode/ecommerce.xml may contain a local system path, so each developer should configure it according to their own machine. <br>
 
-```
 
-### ⚙️ Setup Instructions -
+### Setup Instructions -
 
 -**Clone repo** <br>
 -**Import into VS Code** <br>
 -**Configure MySQL DB** <br>
+-**Run `database/schema.sql` in MySQL** <br>
 -**Run on Tomcat server**<br>
 
 ---
@@ -118,4 +129,4 @@ Note: .vscode/ecommerce.xml may contain a local system path, so each developer s
 - Basic admin panel added for product management and order status updates. <br>
 - Admin route starts at `/admin/dashboard`. <br>
 - Default admin seed in `database/schema.sql`: `admin@example.com` / `admin123`. <br>
-- Run `database/schema.sql` again before testing the new product/order/admin features. <br>
+- Run `database/schema.sql` again before testing the product/order/admin features. <br>
