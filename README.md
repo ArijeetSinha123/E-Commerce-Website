@@ -62,6 +62,7 @@ E-Commerce-Website/
 │
 ├── WEB-INF/
 │   ├── web.xml                            ← Servlet configuration and URL mappings
+│   ├── classes/                           ← Compiled .class files [AUTO-GENERATED/LOCAL]                        
 │   └── lib/                               ← External JAR files
 │       └── mysql-connector-j-9.7.0.jar    ← MySQL JDBC driver
 │
