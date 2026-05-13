@@ -13,7 +13,7 @@
 </head>
 <body>
     <header class="site-header">
-        <a class="brand" href="${pageContext.request.contextPath}/index.jsp">Shop</a>
+        <a class="brand" href="${pageContext.request.contextPath}/index.jsp">JackBuy</a>
         <nav>
             <a href="${pageContext.request.contextPath}/products">Products</a>
             <a href="${pageContext.request.contextPath}/cart">Cart</a>
