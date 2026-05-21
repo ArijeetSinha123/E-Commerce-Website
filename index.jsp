@@ -7,20 +7,42 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E-Commerce Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
     <script src="${pageContext.request.contextPath}/assets/js/script.js" defer></script>
 </head>
 <body>
-    <header class="site-header">
-        <a class="brand" href="${pageContext.request.contextPath}/index.jsp">JackBuy</a>
-        <nav>
-            <a href="${pageContext.request.contextPath}/products">Products</a>
-            <a href="${pageContext.request.contextPath}/cart">Cart</a>
-            <a href="${pageContext.request.contextPath}/orders">Orders</a>
-            <a href="${pageContext.request.contextPath}/View/admin/login.jsp">Admin Login</a>
-        </nav>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand brand-logo" href="${pageContext.request.contextPath}/index.jsp">JackBuy</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/index.jsp">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/cart">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/orders">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/View/admin/login.jsp">Admin Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <main class="page">
         <section class="card">
@@ -52,5 +74,6 @@
             <% } %>
         </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </body>
 </html>
