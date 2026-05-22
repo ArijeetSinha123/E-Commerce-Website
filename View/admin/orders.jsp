@@ -32,7 +32,7 @@
                         <a class="nav-link nav-text" href="${pageContext.request.contextPath}/admin/orders">Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/index.jsp">Store</a>
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/index.jsp">Home</a>
                     </li>
                 </ul>
             </div>
@@ -41,8 +41,20 @@
     <main class="page">
         <div class="page-title">
             <h1>Manage Orders</h1>
-            <a class="button-link" href="${pageContext.request.contextPath}/admin/dashboard">Dashboard</a>
+            <div class="inline-actions">
+                <a class="button-link" href="${pageContext.request.contextPath}/index.jsp">Home</a>
+                <a class="button-link" href="${pageContext.request.contextPath}/admin/dashboard">Dashboard</a>
+            </div>
         </div>
+        <% if ("1".equals(request.getParameter("invalidStatus"))) { %>
+            <p class="error">Invalid order status.</p>
+        <% } %>
+        <% if ("1".equals(request.getParameter("updated"))) { %>
+            <p class="success">Order status updated.</p>
+        <% } %>
+        <% if ("1".equals(request.getParameter("error"))) { %>
+            <p class="error">Unable to update order status.</p>
+        <% } %>
         <% if (orders == null || orders.isEmpty()) { %>
             <p>No orders found.</p>
         <% } else { %>

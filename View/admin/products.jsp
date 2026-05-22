@@ -32,7 +32,7 @@
                         <a class="nav-link nav-text" href="${pageContext.request.contextPath}/admin/orders">Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/index.jsp">Store</a>
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/index.jsp">Home</a>
                     </li>
                 </ul>
             </div>
@@ -41,8 +41,26 @@
     <main class="page">
         <div class="page-title">
             <h1>Manage Products</h1>
-            <a class="button-link" href="${pageContext.request.contextPath}/admin/products?action=new">Add Product</a>
+            <div class="inline-actions">
+                <a class="button-link" href="${pageContext.request.contextPath}/index.jsp">Home</a>
+                <a class="button-link" href="${pageContext.request.contextPath}/admin/products?action=new">Add Product</a>
+            </div>
         </div>
+        <% if ("1".equals(request.getParameter("created"))) { %>
+            <p class="success">Product created.</p>
+        <% } %>
+        <% if ("1".equals(request.getParameter("updated"))) { %>
+            <p class="success">Product updated.</p>
+        <% } %>
+        <% if ("1".equals(request.getParameter("deleted"))) { %>
+            <p class="success">Product deleted.</p>
+        <% } %>
+        <% if ("1".equals(request.getParameter("deleteBlocked"))) { %>
+            <p class="error">This product is used in existing orders and cannot be deleted.</p>
+        <% } %>
+        <% if ("1".equals(request.getParameter("error"))) { %>
+            <p class="error">Unable to update product.</p>
+        <% } %>
         <% if (products == null || products.isEmpty()) { %>
             <p>No products found.</p>
         <% } else { %>

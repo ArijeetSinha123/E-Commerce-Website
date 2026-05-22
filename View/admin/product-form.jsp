@@ -32,14 +32,17 @@
                         <a class="nav-link nav-text" href="${pageContext.request.contextPath}/admin/orders">Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/index.jsp">Store</a>
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/index.jsp">Home</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
     <main class="page narrow">
-        <h1><%= editing ? "Edit" : "Add" %> Product</h1>
+        <div class="page-title">
+            <h1><%= editing ? "Edit" : "Add" %> Product</h1>
+            <a class="button-link" href="${pageContext.request.contextPath}/index.jsp">Home</a>
+        </div>
         <form action="${pageContext.request.contextPath}/admin/products" method="post" class="card">
             <input type="hidden" name="action" value="<%= editing ? "update" : "create" %>">
             <% if (editing) { %>

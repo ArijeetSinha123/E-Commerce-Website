@@ -39,6 +39,12 @@ public class AdminOrderServlet extends HttpServlet {
         try {
             int orderId = Integer.parseInt(req.getParameter("orderId"));
             String status = req.getParameter("status");
+
+            if (!OrderDAO.isValidStatus(status)) {
+                res.sendRedirect(req.getContextPath() + "/admin/orders?invalidStatus=1");
+                return;
+            }
+
             new OrderDAO().updateStatus(orderId, status);
             res.sendRedirect(req.getContextPath() + "/admin/orders?updated=1");
         } catch (Exception e) {

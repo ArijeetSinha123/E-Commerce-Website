@@ -31,7 +31,7 @@
                         <a class="nav-link nav-text" href="${pageContext.request.contextPath}/admin/orders">Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/index.jsp">Store</a>
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/index.jsp">Home</a>
                     </li>
                 </ul>
             </div>
@@ -40,9 +40,12 @@
     <main class="page">
         <div class="page-title">
             <h1>Admin Dashboard</h1>
-            <form action="${pageContext.request.contextPath}/admin/logout" method="post">
-                <button type="submit" class="secondary">Admin Logout</button>
-            </form>
+            <div class="inline-actions">
+                <a class="button-link" href="${pageContext.request.contextPath}/index.jsp">Home</a>
+                <form action="${pageContext.request.contextPath}/admin/logout" method="post">
+                    <button type="submit" class="secondary">Admin Logout</button>
+                </form>
+            </div>
         </div>
         <p>Welcome, <%= admin.getName() %>.</p>
         <section class="product-grid">

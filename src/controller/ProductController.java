@@ -15,6 +15,10 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
 
+        res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+        res.setHeader("Pragma", "no-cache");
+        res.setDateHeader("Expires", 0);
+
         try {
             req.setAttribute("products", new ProductDAO().findAll(req.getParameter("q")));
             req.setAttribute("search", req.getParameter("q"));

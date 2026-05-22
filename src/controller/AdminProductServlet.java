@@ -58,8 +58,18 @@ public class AdminProductServlet extends HttpServlet {
 
         try {
             if ("delete".equals(action)) {
-                dao.delete(parseInt(req.getParameter("id"), 0));
-                res.sendRedirect(req.getContextPath() + "/admin/products?deleted=1");
+                int id = parseInt(req.getParameter("id"), 0);
+
+                if (dao.existsInOrders(id)) {
+                    res.sendRedirect(req.getContextPath() + "/admin/products?deleteBlocked=1");
+                    return;
+                }
+
+                if (dao.delete(id)) {
+                    res.sendRedirect(req.getContextPath() + "/admin/products?deleted=1");
+                } else {
+                    res.sendRedirect(req.getContextPath() + "/admin/products?error=1");
+                }
                 return;
             }
 

@@ -95,6 +95,21 @@ public class ProductDAO {
         }
     }
 
+    public boolean existsInOrders(int id) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM order_items WHERE product_id = ?";
+
+        try (Connection conn = DBConnection.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                rs.next();
+                return rs.getInt(1) > 0;
+            }
+        }
+    }
+
     public int countProducts() throws SQLException {
         String sql = "SELECT COUNT(*) FROM products";
 
