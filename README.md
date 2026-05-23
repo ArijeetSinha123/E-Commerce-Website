@@ -1,4 +1,4 @@
-# E-Commerce Website
+# NexCart - A Java based E-Commerce Website
 
 A dynamic, full-featured Java-based e-commerce web application built with Servlets, JSP, and JDBC. This application provides a complete shopping experience for users and comprehensive management tools for administrators.
 
@@ -163,17 +163,6 @@ E-Commerce-Website/
 3. Manage products, update inventory, and process orders
 
 ## Development Status
-
-### Latest Updates (September 5, 2026)
-
-- ✅ Complete user authentication system (registration and login)
-- ✅ Product browsing, search, and filtering functionality
-- ✅ Full shopping cart and checkout flow
-- ✅ Order history and cancellation features
-- ✅ Admin dashboard with statistics
-- ✅ Admin product management (CRUD operations)
-- ✅ Admin order status management
-- ✅ Session-based user and admin authentication
 
 ### Future Enhancements
 
