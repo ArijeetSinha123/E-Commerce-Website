@@ -1,0 +1,206 @@
+/* =========================
+   NEXCART FOOTER DESIGN
+========================= */
+
+footer {
+    background: rgba(15, 23, 42, 0.98);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 60px;
+    padding: 55px 40px 20px;
+    color: #e2e8f0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Glow Effect */
+footer::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: rgba(56, 189, 248, 0.08);
+    border-radius: 50%;
+    top: -120px;
+    right: -120px;
+    filter: blur(60px);
+}
+
+/* Footer Container */
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 35px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Footer Logo */
+.footer-logo h2 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 14px;
+}
+
+.footer-logo span {
+    color: #38bdf8;
+}
+
+.footer-logo p {
+    color: #94a3b8;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+/* Footer Titles */
+.footer-links h3,
+.footer-contact h3,
+.footer-social h3 {
+    font-size: 21px;
+    margin-bottom: 18px;
+    color: #ffffff;
+    position: relative;
+}
+
+/* Underline */
+.footer-links h3::after,
+.footer-contact h3::after,
+.footer-social h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 55px;
+    height: 3px;
+    border-radius: 20px;
+    background: linear-gradient(to right, #38bdf8, #14b8a6);
+}
+
+/* Footer Links */
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 14px 0;
+}
+
+.footer-links ul li a {
+    text-decoration: none;
+    color: #cbd5e1;
+    transition: 0.3s ease;
+    position: relative;
+    font-size: 15px;
+}
+
+.footer-links ul li a:hover {
+    color: #38bdf8;
+    padding-left: 6px;
+}
+
+/* Contact Info */
+.footer-contact p {
+    margin: 12px 0;
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.social-icons a {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    font-size: 18px;
+    transition: 0.3s ease;
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    background: linear-gradient(135deg, #38bdf8, #14b8a6);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(56, 189, 248, 0.35);
+}
+
+/* Newsletter Input */
+.footer-newsletter {
+    margin-top: 15px;
+}
+
+.footer-newsletter input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: white;
+    margin-bottom: 12px;
+    outline: none;
+}
+
+.footer-newsletter input:focus {
+    border-color: #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.footer-newsletter input::placeholder {
+    color: #94a3b8;
+}
+
+/* Newsletter Button */
+.footer-newsletter button {
+    width: 100%;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #38bdf8, #14b8a6);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.footer-newsletter button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(56, 189, 248, 0.35);
+}
+
+/* Bottom Footer */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    margin-top: 45px;
+    padding-top: 20px;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 14px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    footer {
+        padding: 45px 20px 20px;
+    }
+
+    .footer-logo h2 {
+        font-size: 28px;
+    }
+
+    .footer-container {
+        gap: 28px;
+    }
+}

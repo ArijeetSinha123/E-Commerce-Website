@@ -1,0 +1,94 @@
+/* =========================
+   NEXCART HEADER / NAVBAR
+========================= */
+
+.custom-navbar {
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    padding: 14px 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Brand Logo */
+.brand-logo {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.brand-logo:hover {
+    color: #38bdf8;
+}
+
+/* Navbar Links */
+.nav-text {
+    color: #e2e8f0 !important;
+    font-size: 17px;
+    font-weight: 500;
+    margin-left: 22px;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+/* Hover Effect */
+.nav-text:hover {
+    color: #38bdf8 !important;
+}
+
+/* Animated Underline */
+.nav-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(to right, #38bdf8, #14b8a6);
+    border-radius: 10px;
+    transition: 0.3s ease;
+}
+
+.nav-text:hover::after {
+    width: 100%;
+}
+
+/* Active Navbar Link */
+.nav-text.active {
+    color: #38bdf8 !important;
+}
+
+.nav-text.active::after {
+    width: 100%;
+}
+
+/* Mobile Toggle Button */
+.navbar-toggler {
+    border: none;
+    outline: none;
+    box-shadow: none !important;
+}
+
+.navbar-toggler-icon {
+    filter: brightness(100);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .custom-navbar {
+        padding: 14px 20px;
+    }
+
+    .brand-logo {
+        font-size: 26px;
+    }
+
+    .nav-text {
+        margin-left: 0;
+        margin-top: 12px;
+        display: inline-block;
+    }
+}

@@ -9,12 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css?v=20260523">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css?v=20260523">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css?v=20260523">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
         <div class="container-fluid">
-            <a class="navbar-brand brand-logo" href="${pageContext.request.contextPath}/index.jsp">JackBuy</a>
+            <a class="navbar-brand brand-logo" href="${pageContext.request.contextPath}/index.jsp">NexCart</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
                     aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -42,7 +44,7 @@
     </nav>
     <main class="page narrow">
         <section class="card">
-            <h1>Login</h1>
+            <h1>Login</h1> <br>
             <% if ("1".equals(registered)) { %>
                 <p class="success">Registration successful. Please login.</p>
             <% } %>
@@ -61,9 +63,11 @@
                 <p><label>Password<br><input type="password" name="password" required></label></p>
                 <button type="submit">Login</button>
             </form>
+            <br>
             <p>New user? <a href="${pageContext.request.contextPath}/View/register.jsp">Register here</a></p>
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <jsp:include page="includes/footer.jsp" />
 </body>
 </html>
