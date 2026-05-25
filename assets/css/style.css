@@ -189,6 +189,286 @@ button.secondary:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.62;
+    transform: none;
+}
+
+/* =========================
+   HOME STOREFRONT
+========================= */
+
+.home-page {
+    max-width: 1240px;
+}
+
+.home-hero {
+    align-items: stretch;
+    background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(20, 184, 166, 0.14)),
+        linear-gradient(90deg, rgba(56, 189, 248, 0.16), rgba(248, 250, 252, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: grid;
+    gap: 28px;
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+    margin-bottom: 34px;
+    overflow: hidden;
+    padding: 46px;
+}
+
+.home-hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-kicker {
+    color: #67e8f9;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.home-hero h1 {
+    font-size: 68px;
+    line-height: 1;
+    margin-bottom: 18px;
+}
+
+.home-lead {
+    color: #dbeafe;
+    font-size: 19px;
+    max-width: 700px;
+}
+
+.home-alert,
+.home-user {
+    margin: 16px 0 18px;
+}
+
+.home-hero-panel {
+    background: rgba(248, 250, 252, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    display: grid;
+    gap: 14px;
+    padding: 22px;
+}
+
+.hero-stat {
+    background: rgba(15, 23, 42, 0.64);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    color: #dbeafe;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+    min-height: 94px;
+    padding: 18px;
+}
+
+.hero-stat strong {
+    color: #ffffff;
+    font-size: 30px;
+    line-height: 1;
+}
+
+.secondary-link {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+}
+
+.storefront-section {
+    margin-top: 16px;
+}
+
+.section-heading {
+    align-items: flex-end;
+    display: flex;
+    gap: 18px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.section-heading h2 {
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.text-link {
+    color: #67e8f9;
+    font-weight: 700;
+}
+
+.text-link:hover {
+    color: #ffffff;
+}
+
+.home-product-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.home-product-card {
+    background: #f8fafc;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    border-radius: 8px;
+    color: #0f172a;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    overflow: hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.home-product-card:hover {
+    border-color: rgba(20, 184, 166, 0.55);
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.28);
+    transform: translateY(-4px);
+}
+
+.home-product-media {
+    align-items: center;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #0f766e, #0284c7);
+    color: #ffffff;
+    display: flex;
+    font-size: 58px;
+    font-weight: 800;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.home-product-media img {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.home-product-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    padding: 18px;
+}
+
+.product-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.product-meta span {
+    background: #e0f2fe;
+    border-radius: 999px;
+    color: #075985;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 10px;
+}
+
+.home-product-body h3 {
+    color: #0f172a;
+    font-size: 21px;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0;
+}
+
+.home-product-body p {
+    color: #475569;
+    flex: 1;
+    font-size: 15px;
+    margin: 0;
+}
+
+.product-buy-row {
+    align-items: center;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    padding-top: 14px;
+}
+
+.product-buy-row strong {
+    color: #0f172a;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.quick-add-form {
+    margin: 0;
+}
+
+.quick-add-form button,
+.product-buy-row button {
+    border-radius: 8px;
+    min-height: 40px;
+    padding: 9px 14px;
+    white-space: nowrap;
+}
+
+.empty-store {
+    background: rgba(248, 250, 252, 0.08);
+    border: 1px dashed rgba(255, 255, 255, 0.22);
+    border-radius: 8px;
+    grid-column: 1 / -1;
+    padding: 34px;
+}
+
+.empty-store h3 {
+    color: #ffffff;
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.home-service-strip {
+    background: rgba(248, 250, 252, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 8px;
+    display: grid;
+    gap: 18px;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 34px;
+    padding: 22px;
+}
+
+.home-service-strip strong {
+    color: #ffffff;
+    display: block;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.home-service-strip p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.home-admin-link {
+    align-items: center;
+    color: #cbd5e1;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 22px;
+}
+
+.home-admin-link a {
+    color: #67e8f9;
+    font-weight: 700;
+}
+
 /* =========================
    INPUTS
 ========================= */
@@ -294,5 +574,39 @@ form.card {
     .inline-form input {
         width: 100%;
         min-width: auto;
+    }
+
+    .home-hero {
+        grid-template-columns: 1fr;
+        padding: 26px;
+    }
+
+    .home-hero h1 {
+        font-size: 48px;
+    }
+
+    .home-lead {
+        font-size: 16px;
+    }
+
+    .section-heading,
+    .product-buy-row,
+    .home-admin-link {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    .home-service-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-add-form,
+    .quick-add-form button,
+    .product-buy-row button {
+        width: 100%;
     }
 }

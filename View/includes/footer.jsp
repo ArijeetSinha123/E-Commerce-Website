@@ -21,9 +21,9 @@
         <!-- Contact Information -->
         <div class="footer-contact">
             <h3>Contact Info</h3>
-            <p>Email: support@jackbuy.com</p>
-            <p>Phone: +1 (800) 123-4567</p>
-            <p>Address: 123 Shopping Street, Commerce City, CC 12345</p>
+            <p>Email: support@nexcart.com</p>
+            <p>Phone: 123456789</p>
+            <p>Address: Kolkata, India</p>
             <p>Hours: Mon-Sat 9AM - 8PM EST</p>
         </div>
 
@@ -45,6 +45,6 @@
 
     <!-- Bottom Footer -->
     <div class="footer-bottom">
-<p>&copy; 2024 NexCart E-Commerce. All rights reserved. | <a href="#" style="color: #38bdf8;">Privacy Policy</a> | <a href="#" style="color: #38bdf8;">Terms of Service</a></p>
+<p>&copy; 2026 NexCart E-Commerce. A BCA K1 Project. All rights reserved. | <a href="#" style="color: #38bdf8;">Privacy Policy</a> | <a href="#" style="color: #38bdf8;">Terms of Service</a></p>
     </div>
 </footer>

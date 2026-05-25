@@ -55,7 +55,7 @@
                 <p><label>Password<br><input type="password" name="password" required></label></p>
                 <button type="submit">Login as Admin</button>
             </form>
-
+            <br>
             <p><a href="${pageContext.request.contextPath}/index.jsp">Back to store</a></p>
         </section>
     </main>
