@@ -9,6 +9,7 @@ public class Product {
     private BigDecimal price;
     private int stock;
     private String imageUrl;
+    private String category;
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -27,4 +28,7 @@ public class Product {
 
     public String getImageUrl() { return imageUrl; }
     public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
+
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 }

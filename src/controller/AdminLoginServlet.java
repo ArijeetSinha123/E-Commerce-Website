@@ -24,6 +24,8 @@ public class AdminLoginServlet extends HttpServlet {
             return;
         }
 
+        email = email.trim();
+
         try {
             Admin admin = new AdminDAO().login(email, password);
 

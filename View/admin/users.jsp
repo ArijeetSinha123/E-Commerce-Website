@@ -1,14 +1,14 @@
 <%@ page import="java.util.List" %>
-<%@ page import="model.Product" %>
+<%@ page import="model.User" %>
 <%
-    List<Product> products = (List<Product>) request.getAttribute("products");
+    List<User> users = (List<User>) request.getAttribute("users");
 %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Products</title>
+    <title>Admin Users</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css?v=20260523">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css?v=20260523">
@@ -45,50 +45,50 @@
     </nav>
     <main class="page">
         <div class="page-title">
-            <h1>Manage Products</h1>
+            <h1>Manage Users</h1>
             <div class="inline-actions">
-                <a class="button-link" href="${pageContext.request.contextPath}/index.jsp">Home</a>
-                <a class="button-link" href="${pageContext.request.contextPath}/admin/products?action=new">Add Product</a>
+                <a class="button-link" href="${pageContext.request.contextPath}/admin/dashboard">Dashboard</a>
             </div>
         </div>
-        <% if ("1".equals(request.getParameter("created"))) { %>
-            <p class="success">Product created.</p>
-        <% } %>
+
         <% if ("1".equals(request.getParameter("updated"))) { %>
-            <p class="success">Product updated.</p>
+            <p class="success">User updated.</p>
         <% } %>
         <% if ("1".equals(request.getParameter("deleted"))) { %>
-            <p class="success">Product deleted.</p>
+            <p class="success">User removed.</p>
         <% } %>
         <% if ("1".equals(request.getParameter("deleteBlocked"))) { %>
-            <p class="error">This product is used in existing orders and cannot be deleted.</p>
+            <p class="error">This user has active orders and cannot be removed.</p>
+        <% } %>
+        <% if ("1".equals(request.getParameter("duplicateEmail"))) { %>
+            <p class="error">That email is already used by another user.</p>
         <% } %>
         <% if ("1".equals(request.getParameter("validationError"))) { %>
-            <p class="error">Please enter a valid product name, category, price, and stock.</p>
+            <p class="error">Please enter a valid name, email, and password.</p>
         <% } %>
         <% if ("1".equals(request.getParameter("notFound"))) { %>
-            <p class="error">Product not found. It may have already been deleted.</p>
+            <p class="error">User not found.</p>
         <% } %>
-        <% if ("1".equals(request.getParameter("error"))) { %>
-            <p class="error">Unable to update product.</p>
+        <% if ("1".equals(request.getParameter("error")) || request.getAttribute("error") != null) { %>
+            <p class="error">Unable to update users.</p>
         <% } %>
-        <% if (products == null || products.isEmpty()) { %>
-            <p>No products found.</p>
+
+        <% if (users == null || users.isEmpty()) { %>
+            <p>No users found.</p>
         <% } else { %>
             <table>
-                <tr><th>Name</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr>
-                <% for (Product product : products) { %>
+                <tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr>
+                <% for (User user : users) { %>
                     <tr>
-                        <td><%= product.getName() %></td>
-                        <td><%= product.getCategory() == null ? "Uncategorized" : product.getCategory() %></td>
-                        <td>Rs. <%= product.getPrice() %></td>
-                        <td><%= product.getStock() %></td>
+                        <td>#<%= user.getId() %></td>
+                        <td><%= user.getName() %></td>
+                        <td><%= user.getEmail() %></td>
                         <td class="inline-actions">
-                            <a class="button-link" href="${pageContext.request.contextPath}/admin/products?action=edit&id=<%= product.getId() %>">Edit</a>
-                            <form action="${pageContext.request.contextPath}/admin/products" method="post">
+                            <a class="button-link" href="${pageContext.request.contextPath}/admin/users?action=edit&id=<%= user.getId() %>">Edit</a>
+                            <form action="${pageContext.request.contextPath}/admin/users" method="post">
                                 <input type="hidden" name="action" value="delete">
-                                <input type="hidden" name="id" value="<%= product.getId() %>">
-                                <button type="submit" class="secondary">Delete</button>
+                                <input type="hidden" name="id" value="<%= user.getId() %>">
+                                <button type="submit" class="secondary">Remove</button>
                             </form>
                         </td>
                     </tr>

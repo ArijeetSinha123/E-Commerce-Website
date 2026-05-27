@@ -18,6 +18,11 @@ public class CheckoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
+        if (req.getSession().getAttribute("user") == null) {
+            res.sendRedirect(req.getContextPath() + "/View/login.jsp?error=login_required");
+            return;
+        }
+
         req.getRequestDispatcher("/View/checkout.jsp").forward(req, res);
     }
 

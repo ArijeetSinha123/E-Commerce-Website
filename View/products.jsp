@@ -1,9 +1,42 @@
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.LinkedHashMap" %>
+<%@ page import="java.util.Map" %>
 <%@ page import="model.Product" %>
 <%
     List<Product> products = (List<Product>) request.getAttribute("products");
     String search = (String) request.getAttribute("search");
     String error = (String) request.getAttribute("error");
+    Map<String, List<Product>> categorizedProducts = new LinkedHashMap<>();
+    categorizedProducts.put("Electronics", new ArrayList<Product>());
+    categorizedProducts.put("Fashion", new ArrayList<Product>());
+    categorizedProducts.put("Home & Living", new ArrayList<Product>());
+    categorizedProducts.put("Sports", new ArrayList<Product>());
+    categorizedProducts.put("Beauty & Care", new ArrayList<Product>());
+
+    if (products != null) {
+        for (Product product : products) {
+            String category = resolveCategory(product);
+            if (categorizedProducts.containsKey(category)) {
+                categorizedProducts.get(category).add(product);
+            }
+        }
+    }
+%>
+<%!
+    private String resolveCategory(Product product) {
+        if (product.getCategory() == null || product.getCategory().trim().isEmpty()) {
+            return "Electronics";
+        }
+        return product.getCategory().trim();
+    }
+
+    private String productInitial(Product product) {
+        if (product.getName() == null || product.getName().trim().isEmpty()) {
+            return "N";
+        }
+        return product.getName().trim().substring(0, 1).toUpperCase();
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -61,26 +94,67 @@
             <p class="error"><%= error %></p>
         <% } %>
 
-        <section class="product-grid">
-            <% if (products == null || products.isEmpty()) { %>
-                <p>No products found.</p>
-            <% } else { %>
-                <% for (Product product : products) { %>
-                    <article class="card">
-                        <div class="product-image"><%= product.getName().substring(0, 1).toUpperCase() %></div>
-                        <h2><%= product.getName() %></h2>
-                        <p><%= product.getDescription() %></p>
-                        <strong>Rs. <%= product.getPrice() %></strong>
-                        <small><%= product.getStock() %> in stock</small>
-                        <form action="${pageContext.request.contextPath}/cart" method="post" class="inline-form">
-                            <input type="hidden" name="action" value="add">
-                            <input type="hidden" name="productId" value="<%= product.getId() %>">
-                            <input type="number" name="quantity" value="1" min="1" max="<%= product.getStock() %>">
-                            <button type="submit">Add</button>
-                        </form>
-                    </article>
+        <% if (products == null || products.isEmpty()) { %>
+            <section class="empty-store">
+                <h3>No products found.</h3>
+                <p>Try another search or check back after new products are added.</p>
+            </section>
+        <% } else { %>
+            <section class="category-nav" aria-label="Product categories">
+                <% for (Map.Entry<String, List<Product>> entry : categorizedProducts.entrySet()) { %>
+                    <% if (!entry.getValue().isEmpty()) { %>
+                        <a href="#category-<%= entry.getKey().replace(" & ", "-").replace(" ", "-").toLowerCase() %>">
+                            <%= entry.getKey() %>
+                        </a>
+                    <% } %>
+                <% } %>
+            </section>
+
+            <% for (Map.Entry<String, List<Product>> entry : categorizedProducts.entrySet()) { %>
+                <% if (!entry.getValue().isEmpty()) { %>
+                    <section class="catalog-section" id="category-<%= entry.getKey().replace(" & ", "-").replace(" ", "-").toLowerCase() %>">
+                        <div class="catalog-heading">
+                            <div>
+                                <span><%= entry.getValue().size() %> products</span>
+                                <h2><%= entry.getKey() %></h2>
+                            </div>
+                        </div>
+
+                        <div class="product-grid catalog-grid">
+                            <% for (Product product : entry.getValue()) { %>
+                                <article class="card catalog-card">
+                                    <div class="product-image catalog-image">
+                                        <%= productInitial(product) %>
+                                    </div>
+                                    <div class="catalog-card-body">
+                                        <div class="product-meta">
+                                            <span><%= entry.getKey() %></span>
+                                            <% if (product.getStock() > 0) { %>
+                                                <span><%= product.getStock() %> in stock</span>
+                                            <% } else { %>
+                                                <span>Out of stock</span>
+                                            <% } %>
+                                        </div>
+                                        <h2><%= product.getName() %></h2>
+                                        <p><%= product.getDescription() == null ? "No description available." : product.getDescription() %></p>
+                                        <div class="catalog-buy-row">
+                                            <strong>Rs. <%= product.getPrice() %></strong>
+                                            <form action="${pageContext.request.contextPath}/cart" method="post" class="quick-add-form">
+                                                <input type="hidden" name="action" value="add">
+                                                <input type="hidden" name="productId" value="<%= product.getId() %>">
+                                                <input type="hidden" name="quantity" value="1">
+                                                <button type="submit" <%= product.getStock() <= 0 ? "disabled" : "" %>>Add to Cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </article>
+                            <% } %>
+                        </div>
+                    </section>
                 <% } %>
             <% } %>
-        </section>
+        <% } %>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

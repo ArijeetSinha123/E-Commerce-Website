@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS products (
     price DECIMAL(10, 2) NOT NULL,
     stock INT NOT NULL DEFAULT 0,
     image_url VARCHAR(255),
+    category VARCHAR(60) NOT NULL DEFAULT 'Electronics',
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -52,14 +53,62 @@ INSERT INTO admins (name, email, password, active)
 SELECT 'Admin', 'admin@example.com', 'admin123', TRUE
 WHERE NOT EXISTS (SELECT 1 FROM admins WHERE email = 'admin@example.com');
 
-INSERT INTO products (name, description, price, stock, image_url)
-SELECT 'Wireless Headphones', 'Bluetooth headphones with long battery life.', 2499.00, 25, NULL
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Wireless Headphones', 'Bluetooth headphones with long battery life.', 2499.00, 25, NULL, 'Electronics'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Wireless Headphones');
 
-INSERT INTO products (name, description, price, stock, image_url)
-SELECT 'Smart Watch', 'Fitness tracking and mobile notifications.', 3999.00, 18, NULL
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Smart Watch', 'Fitness tracking and mobile notifications.', 3999.00, 18, NULL, 'Electronics'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Smart Watch');
 
-INSERT INTO products (name, description, price, stock, image_url)
-SELECT 'Laptop Backpack', 'Water-resistant backpack with laptop storage.', 1299.00, 40, NULL
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Bluetooth Speaker', 'Portable wireless speaker with clear sound for daily music and calls.', 1599.00, 20, NULL, 'Electronics'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Bluetooth Speaker');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Laptop Backpack', 'Water-resistant backpack with laptop storage.', 1299.00, 40, NULL, 'Fashion'
 WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Laptop Backpack');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Cotton Casual Shirt', 'Comfortable everyday shirt for a clean casual look.', 799.00, 35, NULL, 'Fashion'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Cotton Casual Shirt');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Classic Denim Jeans', 'Durable denim jeans with a comfortable everyday fit.', 1499.00, 22, NULL, 'Fashion'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Classic Denim Jeans');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Ceramic Coffee Mug', 'Durable ceramic mug for tea, coffee, and daily use.', 299.00, 50, NULL, 'Home & Living'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Ceramic Coffee Mug');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Desk Table Lamp', 'Compact table lamp for study, work desk, and bedroom lighting.', 699.00, 26, NULL, 'Home & Living'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Desk Table Lamp');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Soft Cushion Pillow', 'Soft cushion pillow for sofa, bed, and home comfort.', 499.00, 32, NULL, 'Home & Living'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Soft Cushion Pillow');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'ProFit Yoga Mat', 'Non-slip sports yoga mat for home workouts and fitness training.', 899.00, 25, NULL, 'Sports'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'ProFit Yoga Mat');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'StrideX Running Shoes', 'Lightweight running shoes for jogging, gym sessions, and outdoor fitness.', 2499.00, 18, NULL, 'Sports'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'StrideX Running Shoes');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Fitness Dumbbell Set', 'Pair of dumbbells for home gym strength training and workouts.', 1299.00, 16, NULL, 'Sports'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Fitness Dumbbell Set');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Herbal Face Wash', 'Gentle face wash for fresh and clean everyday skin care.', 349.00, 30, NULL, 'Beauty & Care'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Herbal Face Wash');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Aloe Moisturizing Cream', 'Lightweight moisturizing cream for soft and healthy-looking skin.', 449.00, 28, NULL, 'Beauty & Care'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Aloe Moisturizing Cream');
+
+INSERT INTO products (name, description, price, stock, image_url, category)
+SELECT 'Daily Care Shampoo', 'Gentle shampoo for clean, fresh, and manageable hair.', 399.00, 24, NULL, 'Beauty & Care'
+WHERE NOT EXISTS (SELECT 1 FROM products WHERE name = 'Daily Care Shampoo');

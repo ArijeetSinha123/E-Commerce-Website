@@ -62,7 +62,7 @@
             <div class="home-hero-content">
                 <p class="home-kicker">Fresh picks, fast checkout</p>
                 <h1>NexCart</h1>
-                <p class="home-lead">Shop the latest products added to the store, manage your cart, and place orders with a smooth Java-powered shopping experience.</p>
+                <p class="home-lead">Shop the latest products added to the store, manage your cart, and place orders with a smooth shopping experience.</p>
 
                 <% if ("success".equals(login) && user != null) { %>
                     <p class="success home-alert">Login successful. Welcome, <%= user.getName() %>.</p>

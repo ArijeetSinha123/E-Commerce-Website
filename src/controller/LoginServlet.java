@@ -23,6 +23,8 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
+        email = email.trim();
+
         try {
             UserDAO dao = new UserDAO();
             User user = dao.login(email, password);

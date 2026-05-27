@@ -15,11 +15,11 @@ public class ProductDAO {
 
     public List<Product> findAll(String search) throws SQLException {
         List<Product> products = new ArrayList<>();
-        String sql = "SELECT id, name, description, price, stock, image_url FROM products";
+        String sql = "SELECT id, name, description, price, stock, image_url, category FROM products";
         boolean hasSearch = search != null && !search.trim().isEmpty();
 
         if (hasSearch) {
-            sql += " WHERE name LIKE ? OR description LIKE ?";
+            sql += " WHERE name LIKE ? OR description LIKE ? OR category LIKE ?";
         }
 
         sql += " ORDER BY id DESC";
@@ -31,6 +31,7 @@ public class ProductDAO {
                 String keyword = "%" + search.trim() + "%";
                 stmt.setString(1, keyword);
                 stmt.setString(2, keyword);
+                stmt.setString(3, keyword);
             }
 
             try (ResultSet rs = stmt.executeQuery()) {
@@ -44,7 +45,7 @@ public class ProductDAO {
     }
 
     public Product findById(int id) throws SQLException {
-        String sql = "SELECT id, name, description, price, stock, image_url FROM products WHERE id = ?";
+        String sql = "SELECT id, name, description, price, stock, image_url, category FROM products WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -62,7 +63,7 @@ public class ProductDAO {
     }
 
     public boolean save(Product product) throws SQLException {
-        String sql = "INSERT INTO products (name, description, price, stock, image_url) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO products (name, description, price, stock, image_url, category) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -73,13 +74,13 @@ public class ProductDAO {
     }
 
     public boolean update(Product product) throws SQLException {
-        String sql = "UPDATE products SET name = ?, description = ?, price = ?, stock = ?, image_url = ? WHERE id = ?";
+        String sql = "UPDATE products SET name = ?, description = ?, price = ?, stock = ?, image_url = ?, category = ? WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             setProductFields(stmt, product);
-            stmt.setInt(6, product.getId());
+            stmt.setInt(7, product.getId());
             return stmt.executeUpdate() == 1;
         }
     }
@@ -128,6 +129,7 @@ public class ProductDAO {
         stmt.setBigDecimal(3, product.getPrice());
         stmt.setInt(4, product.getStock());
         stmt.setString(5, product.getImageUrl());
+        stmt.setString(6, product.getCategory());
     }
 
     private Product mapProduct(ResultSet rs) throws SQLException {
@@ -138,6 +140,7 @@ public class ProductDAO {
         product.setPrice(rs.getBigDecimal("price"));
         product.setStock(rs.getInt("stock"));
         product.setImageUrl(rs.getString("image_url"));
+        product.setCategory(rs.getString("category"));
         return product;
     }
 }

@@ -33,6 +33,9 @@
                         <a class="nav-link nav-text" href="${pageContext.request.contextPath}/admin/orders">Orders</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/admin/users">Users</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link nav-text" href="${pageContext.request.contextPath}/index.jsp">Home</a>
                     </li>
                 </ul>
@@ -60,6 +63,11 @@
                 <h2>Orders</h2>
                 <p><%= request.getAttribute("orderCount") %> total orders</p>
                 <a class="button-link" href="${pageContext.request.contextPath}/admin/orders">Manage Orders</a>
+            </article>
+            <article class="card">
+                <h2>Users</h2>
+                <p><%= request.getAttribute("userCount") %> total users</p>
+                <a class="button-link" href="${pageContext.request.contextPath}/admin/users">Manage Users</a>
             </article>
         </section>
     </main>

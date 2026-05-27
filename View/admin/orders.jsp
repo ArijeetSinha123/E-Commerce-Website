@@ -34,6 +34,9 @@
                         <a class="nav-link nav-text" href="${pageContext.request.contextPath}/admin/orders">Orders</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/admin/users">Users</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link nav-text" href="${pageContext.request.contextPath}/index.jsp">Home</a>
                     </li>
                 </ul>

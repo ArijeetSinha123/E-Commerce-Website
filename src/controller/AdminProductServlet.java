@@ -75,12 +75,24 @@ public class AdminProductServlet extends HttpServlet {
 
             Product product = readProduct(req);
             if ("update".equals(action)) {
-                dao.update(product);
-                res.sendRedirect(req.getContextPath() + "/admin/products?updated=1");
+                if (product.getId() <= 0) {
+                    res.sendRedirect(req.getContextPath() + "/admin/products?validationError=1");
+                    return;
+                }
+                if (dao.update(product)) {
+                    res.sendRedirect(req.getContextPath() + "/admin/products?updated=1");
+                } else {
+                    res.sendRedirect(req.getContextPath() + "/admin/products?notFound=1");
+                }
             } else {
-                dao.save(product);
-                res.sendRedirect(req.getContextPath() + "/admin/products?created=1");
+                if (dao.save(product)) {
+                    res.sendRedirect(req.getContextPath() + "/admin/products?created=1");
+                } else {
+                    res.sendRedirect(req.getContextPath() + "/admin/products?error=1");
+                }
             }
+        } catch (IllegalArgumentException e) {
+            res.sendRedirect(req.getContextPath() + "/admin/products?validationError=1");
         } catch (Exception e) {
             res.sendRedirect(req.getContextPath() + "/admin/products?error=1");
         }
@@ -88,13 +100,31 @@ public class AdminProductServlet extends HttpServlet {
 
     private Product readProduct(HttpServletRequest req) {
         Product product = new Product();
+        String name = req.getParameter("name");
+        String category = req.getParameter("category");
+        BigDecimal price = parsePrice(req.getParameter("price"));
+        int stock = parseInt(req.getParameter("stock"), -1);
+
+        if (isBlank(name) || isBlank(category) || price.compareTo(BigDecimal.ZERO) < 0 || stock < 0) {
+            throw new IllegalArgumentException("Invalid product details.");
+        }
+
         product.setId(parseInt(req.getParameter("id"), 0));
-        product.setName(req.getParameter("name"));
+        product.setName(name.trim());
         product.setDescription(req.getParameter("description"));
-        product.setPrice(new BigDecimal(req.getParameter("price")));
-        product.setStock(parseInt(req.getParameter("stock"), 0));
+        product.setPrice(price);
+        product.setStock(stock);
         product.setImageUrl(req.getParameter("imageUrl"));
+        product.setCategory(category.trim());
         return product;
+    }
+
+    private BigDecimal parsePrice(String value) {
+        try {
+            return new BigDecimal(value);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Invalid product price.");
+        }
     }
 
     private int parseInt(String value, int fallback) {
@@ -103,5 +133,9 @@ public class AdminProductServlet extends HttpServlet {
         } catch (Exception e) {
             return fallback;
         }
+    }
+
+    private boolean isBlank(String value) {
+        return value == null || value.trim().isEmpty();
     }
 }

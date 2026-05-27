@@ -19,12 +19,21 @@ public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
+        if (req.getSession().getAttribute("user") == null) {
+            res.sendRedirect(req.getContextPath() + "/View/login.jsp?error=login_required");
+            return;
+        }
+
         req.getRequestDispatcher("/View/cart.jsp").forward(req, res);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
+        if (req.getSession().getAttribute("user") == null) {
+            res.sendRedirect(req.getContextPath() + "/View/login.jsp?error=login_required");
+            return;
+        }
 
         String action = req.getParameter("action");
         Map<Integer, CartItem> cart = getCart(req.getSession());
