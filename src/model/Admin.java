@@ -5,6 +5,7 @@ public class Admin {
     private String name;
     private String email;
     private String password;
+    private boolean forcePasswordChange;
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -17,4 +18,7 @@ public class Admin {
 
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }
+
+    public boolean isForcePasswordChange() { return forcePasswordChange; }
+    public void setForcePasswordChange(boolean forcePasswordChange) { this.forcePasswordChange = forcePasswordChange; }
 }

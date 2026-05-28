@@ -30,6 +30,8 @@ public class LoginServlet extends HttpServlet {
             User user = dao.login(email, password);
 
             if (user != null) {
+                req.changeSessionId();
+                req.getSession().setMaxInactiveInterval(30 * 60);
                 req.getSession().setAttribute("user", user);
                 res.sendRedirect(req.getContextPath() + "/index.jsp?login=success");
             } else {

@@ -18,6 +18,16 @@ public final class AdminAuth {
             return false;
         }
 
+        if (admin.isForcePasswordChange() && !isPasswordChangeRequest(req)) {
+            res.sendRedirect(req.getContextPath() + "/admin/change-password?required=1");
+            return false;
+        }
+
         return true;
+    }
+
+    private static boolean isPasswordChangeRequest(HttpServletRequest req) {
+        String path = req.getRequestURI().substring(req.getContextPath().length());
+        return path.equals("/admin/change-password") || path.equals("/admin/logout");
     }
 }

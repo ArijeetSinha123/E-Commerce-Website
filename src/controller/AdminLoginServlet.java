@@ -30,8 +30,15 @@ public class AdminLoginServlet extends HttpServlet {
             Admin admin = new AdminDAO().login(email, password);
 
             if (admin != null) {
+                req.changeSessionId();
+                req.getSession().setMaxInactiveInterval(20 * 60);
                 req.getSession().setAttribute("admin", admin);
-                res.sendRedirect(req.getContextPath() + "/admin/dashboard?login=success");
+
+                if (admin.isForcePasswordChange()) {
+                    res.sendRedirect(req.getContextPath() + "/admin/change-password?required=1");
+                } else {
+                    res.sendRedirect(req.getContextPath() + "/admin/dashboard?login=success");
+                }
             } else {
                 res.sendRedirect(req.getContextPath() + "/View/admin/login.jsp?error=1");
             }

@@ -52,6 +52,9 @@
                 </form>
             </div>
         </div>
+        <% if ("1".equals(request.getParameter("passwordChanged"))) { %>
+            <p class="success">Admin password updated.</p>
+        <% } %>
         <p>Welcome, <%= admin.getName() %>.</p>
         <section class="product-grid">
             <article class="card">

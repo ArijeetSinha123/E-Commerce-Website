@@ -110,8 +110,7 @@
                 <% if (products == null || products.isEmpty()) { %>
                     <article class="empty-store">
                         <h3>No products available yet</h3>
-                        <p>Products added by the admin will appear here automatically.</p>
-                        <a class="button-link" href="${pageContext.request.contextPath}/View/admin/login.jsp">Admin Login</a>
+                        <p>New products will appear here automatically.</p>
                     </article>
                 <% } else { %>
                     <% for (Product product : products) {
@@ -173,12 +172,6 @@
             </div>
         </section>
 
-        <% if (user == null) { %>
-            <section class="home-admin-link">
-                <span>Store Admin?</span>
-                <a href="${pageContext.request.contextPath}/View/admin/login.jsp">Go to Admin Login</a>
-            </section>
-        <% } %>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 

@@ -1,4 +1,6 @@
-CREATE DATABASE IF NOT EXISTS ecommerce_db;
+CREATE DATABASE IF NOT EXISTS ecommerce_db
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_unicode_ci;
 
 USE ecommerce_db;
 
@@ -16,6 +18,7 @@ CREATE TABLE IF NOT EXISTS admins (
     email VARCHAR(150) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     active BOOLEAN NOT NULL DEFAULT TRUE,
+    force_password_change BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -49,9 +52,76 @@ CREATE TABLE IF NOT EXISTS order_items (
     CONSTRAINT fk_order_items_product FOREIGN KEY (product_id) REFERENCES products(id)
 );
 
-INSERT INTO admins (name, email, password, active)
-SELECT 'Admin', 'admin@example.com', 'admin123', TRUE
+SET @schema_name = DATABASE();
+
+SET @sql = (
+    SELECT IF(
+        COUNT(*) = 0,
+        'ALTER TABLE admins ADD COLUMN active BOOLEAN NOT NULL DEFAULT TRUE',
+        'DO 0'
+    )
+    FROM information_schema.columns
+    WHERE table_schema = @schema_name
+      AND table_name = 'admins'
+      AND column_name = 'active'
+);
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+SET @sql = (
+    SELECT IF(
+        COUNT(*) = 0,
+        'ALTER TABLE products ADD COLUMN image_url VARCHAR(255)',
+        'DO 0'
+    )
+    FROM information_schema.columns
+    WHERE table_schema = @schema_name
+      AND table_name = 'products'
+      AND column_name = 'image_url'
+);
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+SET @sql = (
+    SELECT IF(
+        COUNT(*) = 0,
+        'ALTER TABLE products ADD COLUMN category VARCHAR(60) NOT NULL DEFAULT ''Electronics''',
+        'DO 0'
+    )
+    FROM information_schema.columns
+    WHERE table_schema = @schema_name
+      AND table_name = 'products'
+      AND column_name = 'category'
+);
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+SET @sql = (
+    SELECT IF(
+        COUNT(*) = 0,
+        'ALTER TABLE admins ADD COLUMN force_password_change BOOLEAN NOT NULL DEFAULT FALSE',
+        'DO 0'
+    )
+    FROM information_schema.columns
+    WHERE table_schema = @schema_name
+      AND table_name = 'admins'
+      AND column_name = 'force_password_change'
+);
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+INSERT INTO admins (name, email, password, active, force_password_change)
+SELECT 'Admin', 'admin@example.com', 'admin123', TRUE, TRUE
 WHERE NOT EXISTS (SELECT 1 FROM admins WHERE email = 'admin@example.com');
+
+UPDATE admins
+SET force_password_change = TRUE
+WHERE email = 'admin@example.com'
+  AND password = 'admin123';
 
 INSERT INTO products (name, description, price, stock, image_url, category)
 SELECT 'Wireless Headphones', 'Bluetooth headphones with long battery life.', 2499.00, 25, NULL, 'Electronics'
