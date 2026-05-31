@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,24 +15,62 @@ import util.DBConnection;
 public class ProductDAO {
 
     public List<Product> findAll(String search) throws SQLException {
+        return findAll(search, null, null, null, null, null);
+    }
+
+    public List<Product> findAll(String search, String category, BigDecimal minPrice, BigDecimal maxPrice,
+            String stockFilter, String sort) throws SQLException {
         List<Product> products = new ArrayList<>();
-        String sql = "SELECT id, name, description, price, stock, image_url, category FROM products";
+        String sql = "SELECT id, name, description, price, stock, category FROM products";
         boolean hasSearch = search != null && !search.trim().isEmpty();
+        List<String> where = new ArrayList<>();
+        List<Object> values = new ArrayList<>();
 
         if (hasSearch) {
-            sql += " WHERE name LIKE ? OR description LIKE ? OR category LIKE ?";
+            where.add("(name LIKE ? OR description LIKE ? OR category LIKE ?)");
+            String keyword = "%" + search.trim() + "%";
+            values.add(keyword);
+            values.add(keyword);
+            values.add(keyword);
         }
 
-        sql += " ORDER BY id DESC";
+        if (category != null && !category.trim().isEmpty() && !"All".equalsIgnoreCase(category.trim())) {
+            where.add("category = ?");
+            values.add(category.trim());
+        }
+
+        if (minPrice != null) {
+            where.add("price >= ?");
+            values.add(minPrice);
+        }
+
+        if (maxPrice != null) {
+            where.add("price <= ?");
+            values.add(maxPrice);
+        }
+
+        if ("in".equalsIgnoreCase(stockFilter)) {
+            where.add("stock > 0");
+        } else if ("out".equalsIgnoreCase(stockFilter)) {
+            where.add("stock <= 0");
+        }
+
+        if (!where.isEmpty()) {
+            sql += " WHERE " + String.join(" AND ", where);
+        }
+
+        sql += " ORDER BY " + resolveSort(sort);
 
         try (Connection conn = DBConnection.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            if (hasSearch) {
-                String keyword = "%" + search.trim() + "%";
-                stmt.setString(1, keyword);
-                stmt.setString(2, keyword);
-                stmt.setString(3, keyword);
+            for (int i = 0; i < values.size(); i++) {
+                Object value = values.get(i);
+                if (value instanceof BigDecimal) {
+                    stmt.setBigDecimal(i + 1, (BigDecimal) value);
+                } else {
+                    stmt.setString(i + 1, value.toString());
+                }
             }
 
             try (ResultSet rs = stmt.executeQuery()) {
@@ -44,8 +83,24 @@ public class ProductDAO {
         return products;
     }
 
+    private String resolveSort(String sort) {
+        if ("price_asc".equals(sort)) {
+            return "price ASC, name ASC";
+        }
+        if ("price_desc".equals(sort)) {
+            return "price DESC, name ASC";
+        }
+        if ("name_asc".equals(sort)) {
+            return "name ASC";
+        }
+        if ("name_desc".equals(sort)) {
+            return "name DESC";
+        }
+        return "id DESC";
+    }
+
     public Product findById(int id) throws SQLException {
-        String sql = "SELECT id, name, description, price, stock, image_url, category FROM products WHERE id = ?";
+        String sql = "SELECT id, name, description, price, stock, category FROM products WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -63,7 +118,7 @@ public class ProductDAO {
     }
 
     public boolean save(Product product) throws SQLException {
-        String sql = "INSERT INTO products (name, description, price, stock, image_url, category) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO products (name, description, price, stock, category) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -74,13 +129,13 @@ public class ProductDAO {
     }
 
     public boolean update(Product product) throws SQLException {
-        String sql = "UPDATE products SET name = ?, description = ?, price = ?, stock = ?, image_url = ?, category = ? WHERE id = ?";
+        String sql = "UPDATE products SET name = ?, description = ?, price = ?, stock = ?, category = ? WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             setProductFields(stmt, product);
-            stmt.setInt(7, product.getId());
+            stmt.setInt(6, product.getId());
             return stmt.executeUpdate() == 1;
         }
     }
@@ -128,8 +183,7 @@ public class ProductDAO {
         stmt.setString(2, product.getDescription());
         stmt.setBigDecimal(3, product.getPrice());
         stmt.setInt(4, product.getStock());
-        stmt.setString(5, product.getImageUrl());
-        stmt.setString(6, product.getCategory());
+        stmt.setString(5, product.getCategory());
     }
 
     private Product mapProduct(ResultSet rs) throws SQLException {
@@ -139,7 +193,6 @@ public class ProductDAO {
         product.setDescription(rs.getString("description"));
         product.setPrice(rs.getBigDecimal("price"));
         product.setStock(rs.getInt("stock"));
-        product.setImageUrl(rs.getString("image_url"));
         product.setCategory(rs.getString("category"));
         return product;
     }

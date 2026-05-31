@@ -62,13 +62,14 @@
                         <option value="Home & Living" <%= editing && "Home & Living".equals(product.getCategory()) ? "selected" : "" %>>Home & Living</option>
                         <option value="Sports" <%= editing && "Sports".equals(product.getCategory()) ? "selected" : "" %>>Sports</option>
                         <option value="Beauty & Care" <%= editing && "Beauty & Care".equals(product.getCategory()) ? "selected" : "" %>>Beauty & Care</option>
+                        <option value="Grocery" <%= editing && "Grocery".equals(product.getCategory()) ? "selected" : "" %>>Grocery</option>
+                        <option value="Books & Stationery" <%= editing && "Books & Stationery".equals(product.getCategory()) ? "selected" : "" %>>Books & Stationery</option>
                     </select>
                 </label>
             </p>
             <p><label>Description<br><input type="text" name="description" value="<%= editing ? product.getDescription() : "" %>"></label></p>
             <p><label>Price<br><input type="number" name="price" value="<%= editing ? product.getPrice() : "" %>" step="0.01" min="0" required></label></p>
             <p><label>Stock<br><input type="number" name="stock" value="<%= editing ? product.getStock() : "0" %>" min="0" required></label></p>
-            <p><label>Image URL<br><input type="text" name="imageUrl" value="<%= editing && product.getImageUrl() != null ? product.getImageUrl() : "" %>"></label></p>
             <button type="submit">Save Product</button>
         </form>
     </main>

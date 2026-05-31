@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -20,12 +21,38 @@ public class ProductController extends HttpServlet {
         res.setDateHeader("Expires", 0);
 
         try {
-            req.setAttribute("products", new ProductDAO().findAll(req.getParameter("q")));
+            BigDecimal minPrice = parsePrice(req.getParameter("minPrice"));
+            BigDecimal maxPrice = parsePrice(req.getParameter("maxPrice"));
+
+            req.setAttribute("products", new ProductDAO().findAll(
+                    req.getParameter("q"),
+                    req.getParameter("category"),
+                    minPrice,
+                    maxPrice,
+                    req.getParameter("stock"),
+                    req.getParameter("sort")));
             req.setAttribute("search", req.getParameter("q"));
+            req.setAttribute("selectedCategory", req.getParameter("category"));
+            req.setAttribute("minPrice", req.getParameter("minPrice"));
+            req.setAttribute("maxPrice", req.getParameter("maxPrice"));
+            req.setAttribute("stock", req.getParameter("stock"));
+            req.setAttribute("sort", req.getParameter("sort"));
             req.getRequestDispatcher("/View/products.jsp").forward(req, res);
         } catch (Exception e) {
             req.setAttribute("error", "Unable to load products.");
             req.getRequestDispatcher("/View/products.jsp").forward(req, res);
+        }
+    }
+
+    private BigDecimal parsePrice(String value) {
+        if (value == null || value.trim().isEmpty()) {
+            return null;
+        }
+        try {
+            BigDecimal price = new BigDecimal(value.trim());
+            return price.compareTo(BigDecimal.ZERO) >= 0 ? price : null;
+        } catch (NumberFormatException e) {
+            return null;
         }
     }
 }

@@ -114,7 +114,6 @@ public class AdminProductServlet extends HttpServlet {
         product.setDescription(req.getParameter("description"));
         product.setPrice(price);
         product.setStock(stock);
-        product.setImageUrl(req.getParameter("imageUrl"));
         product.setCategory(category.trim());
         return product;
     }

@@ -121,6 +121,41 @@ p {
     color: #ffffff;
 }
 
+.catalog-filter-panel {
+    background: rgba(248, 250, 252, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin-bottom: 26px;
+    padding: 18px;
+}
+
+.catalog-filter-form {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1.2fr repeat(5, minmax(130px, 1fr)) auto;
+}
+
+.catalog-filter-form label {
+    color: #cbd5e1;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    font-weight: 700;
+    gap: 7px;
+}
+
+.catalog-filter-actions {
+    align-items: end;
+    display: flex;
+    gap: 10px;
+}
+
+.catalog-filter-actions .button-link,
+.catalog-filter-actions button {
+    min-height: 46px;
+    white-space: nowrap;
+}
+
 .catalog-section {
     margin-top: 34px;
 }
@@ -157,23 +192,71 @@ p {
     padding: 0;
 }
 
-.catalog-image {
-    border-radius: 0;
-    margin-bottom: 0;
+.product-image {
+    align-items: center;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.9), rgba(20, 184, 166, 0.85));
+    color: #ffffff;
+    display: flex;
+    font-size: 54px;
+    font-weight: 800;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.catalog-image img {
-    height: 100%;
-    object-fit: cover;
-    width: 100%;
+.product-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.18), transparent 40%);
+}
+
+.product-image span {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
 }
 
 .catalog-card-body {
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: 12px;
-    padding: 20px;
+    gap: 14px;
+    padding: 22px;
+}
+
+.product-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.badge {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    color: #dbeafe;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 7px 12px;
+    text-transform: uppercase;
+}
+
+.badge.in-stock {
+    background: rgba(20, 184, 166, 0.16);
+    color: #a7f3d0;
+}
+
+.badge.out-of-stock {
+    background: rgba(249, 115, 22, 0.16);
+    color: #fed7aa;
 }
 
 .catalog-card-body h2 {
@@ -185,8 +268,87 @@ p {
 }
 
 .catalog-card-body p {
+    color: #cbd5e1;
     flex: 1;
     margin: 0;
+    line-height: 1.65;
+    min-height: 3.5em;
+    overflow: hidden;
+}
+
+.catalog-buy-row {
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    padding-top: 16px;
+}
+
+.catalog-buy-row strong {
+    color: #ffffff;
+    font-size: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.quick-add-form {
+    display: inline-flex;
+    margin-left: auto;
+    min-width: 0;
+}
+
+.catalog-buy-row .quick-add-form button,
+.quick-add-form button.button-primary {
+    min-width: 140px;
+    width: auto;
+    flex-shrink: 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #38bdf8, #14b8a6);
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    padding: 11px 20px;
+    box-shadow: 0 10px 24px rgba(56, 189, 248, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.quick-add-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(56, 189, 248, 0.25);
+}
+
+.quick-add-form button:disabled {
+    opacity: 0.65;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+
+@media (max-width: 760px) {
+    .catalog-buy-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .catalog-buy-row strong {
+        width: 100%;
+    }
+
+    .quick-add-form {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .quick-add-form button {
+        width: auto;
+        max-width: 100%;
+    }
 }
 
 .catalog-buy-row {
@@ -195,43 +357,38 @@ p {
     display: flex;
     gap: 12px;
     justify-content: space-between;
-    padding-top: 14px;
+    padding-top: 16px;
 }
 
-.catalog-buy-row strong {
-    color: #ffffff;
-    font-size: 20px;
-    white-space: nowrap;
+@media (max-width: 720px) {
+    .catalog-filter-form {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 720px) {
+    .catalog-filter-form {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* =========================
    PRODUCT IMAGE
 ========================= */
 
-.product-image {
-    align-items: center;
-    aspect-ratio: 16 / 9;
-    background: linear-gradient(135deg, #0ea5e9, #14b8a6);
-    border-radius: 14px;
-    color: #ffffff;
-    display: flex;
-    font-size: 54px;
-    font-weight: 700;
-    justify-content: center;
-    margin-bottom: 18px;
-    overflow: hidden;
+.product-image img,
+.home-product-media img {
     position: relative;
+    z-index: 2;
 }
 
-.product-image::before {
-    content: "";
-    position: absolute;
-    width: 180%;
-    height: 180%;
-    background: rgba(255, 255, 255, 0.08);
-    transform: rotate(35deg);
-    top: -60%;
-    left: -60%;
+.product-image img + .image-fallback,
+.home-product-media img + .image-fallback {
+    display: none;
+}
+
+.image-fallback {
+    position: relative;
+    z-index: 1;
 }
 
 /* =========================
@@ -516,7 +673,6 @@ button:disabled {
     margin: 0;
 }
 
-.quick-add-form button,
 .product-buy-row button {
     border-radius: 8px;
     min-height: 40px;
@@ -532,10 +688,24 @@ button:disabled {
     padding: 34px;
 }
 
+.empty-kicker {
+    color: #67e8f9;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
 .empty-store h3 {
     color: #ffffff;
     font-size: 26px;
     margin-bottom: 8px;
+}
+
+.empty-store .button-link {
+    margin-top: 16px;
 }
 
 .home-service-strip {
@@ -590,6 +760,11 @@ select {
     outline: none;
     transition: 0.3s;
     width: 100%;
+}
+
+select option {
+    background: #0f172a;
+    color: #ffffff;
 }
 
 input:focus,
@@ -663,6 +838,17 @@ form.card {
    RESPONSIVE DESIGN
 ========================= */
 
+@media (max-width: 1100px) {
+    .catalog-filter-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .catalog-filter-actions {
+        align-items: stretch;
+        grid-column: 1 / -1;
+    }
+}
+
 @media (max-width: 768px) {
     .page {
         padding: 20px;
@@ -708,6 +894,15 @@ form.card {
 
     .home-service-strip {
         grid-template-columns: 1fr;
+    }
+
+    .catalog-filter-form {
+        grid-template-columns: 1fr;
+    }
+
+    .catalog-filter-actions {
+        align-items: stretch;
+        flex-direction: column;
     }
 
     .quick-add-form,

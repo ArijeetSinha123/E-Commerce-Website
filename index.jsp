@@ -2,6 +2,24 @@
 <%@ page import="model.Product" %>
 <%@ page import="model.User" %>
 <%@ page import="model.dao.ProductDAO" %>
+<%!
+    private String productInitial(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            return "?";
+        }
+        return name.trim().substring(0, 1).toUpperCase();
+    }
+
+    private String truncate(String text, int maxLength) {
+        if (text == null || text.trim().isEmpty()) {
+            return "Quality product available now on NexCart.";
+        }
+        if (text.length() <= maxLength) {
+            return text;
+        }
+        return text.substring(0, maxLength - 3) + "...";
+    }
+%>
 <%
     User user = (User) session.getAttribute("user");
     String login = request.getParameter("login");
@@ -22,9 +40,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexCart - E-Commerce Website</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css?v=20260525">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css?v=20260523">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css?v=20260523">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css?v=20260531">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/header.css?v=20260531">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/footer.css?v=20260531">
     <script src="${pageContext.request.contextPath}/assets/js/script.js" defer></script>
 </head>
 <body>
@@ -118,25 +136,18 @@
                         String description = product.getDescription() == null || product.getDescription().trim().isEmpty()
                                 ? "Quality product available now on NexCart."
                                 : product.getDescription();
-                        String imageUrl = product.getImageUrl();
-                        String cleanName = name.trim();
-                        String initial = cleanName.isEmpty() ? "N" : cleanName.substring(0, 1).toUpperCase();
                     %>
                         <article class="home-product-card">
                             <div class="home-product-media">
-                                <% if (imageUrl != null && !imageUrl.trim().isEmpty()) { %>
-                                    <img src="<%= imageUrl %>" alt="<%= name %>">
-                                <% } else { %>
-                                    <span><%= initial %></span>
-                                <% } %>
+                                <span><%= productInitial(name) %></span>
                             </div>
                             <div class="home-product-body">
                                 <div class="product-meta">
+                                    <span><%= product.getCategory() == null ? "Featured" : product.getCategory() %></span>
                                     <span><%= product.getStock() > 0 ? "In stock" : "Out of stock" %></span>
-                                    <span><%= product.getStock() %> left</span>
                                 </div>
-                                <h3><%= name %></h3>
-                                <p><%= description %></p>
+                                <h3 title="<%= name %>"><%= name %></h3>
+                                <p><%= truncate(description, 100) %></p>
                                 <div class="product-buy-row">
                                     <strong>Rs. <%= product.getPrice() %></strong>
                                     <% if (product.getStock() > 0) { %>
