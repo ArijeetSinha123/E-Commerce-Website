@@ -37,6 +37,9 @@
                         <a class="nav-link nav-text" href="${pageContext.request.contextPath}/orders">Orders</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link nav-text" href="${pageContext.request.contextPath}/chat">Chat</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link nav-text" href="${pageContext.request.contextPath}/View/admin/login.jsp">Admin Login</a>
                     </li>
                 </ul>

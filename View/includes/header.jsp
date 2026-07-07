@@ -29,6 +29,10 @@
                     <a class="nav-link nav-text <%= currentPage.contains("orders") ? "active" : "" %>" 
                        href="${pageContext.request.contextPath}/orders">Orders</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-text <%= currentPage.contains("chat") ? "active" : "" %>" 
+                       href="${pageContext.request.contextPath}/chat">Chat</a>
+                </li>
                 <% if (user != null) { %>
                     <li class="nav-item">
                         <a class="nav-link nav-text" href="${pageContext.request.contextPath}/logout">Logout</a>

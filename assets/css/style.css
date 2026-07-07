@@ -782,6 +782,68 @@ input::placeholder {
 }
 
 /* =========================
+   CHAT ASSISTANT
+========================= */
+
+.chat-panel {
+    background: rgba(248, 250, 252, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.chat-form {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.chat-form label {
+    color: #cbd5e1;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.chat-input-row {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.chat-window {
+    display: grid;
+    gap: 14px;
+}
+
+.chat-message {
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.chat-message span {
+    display: block;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.chat-message p {
+    margin: 0;
+}
+
+.user-message {
+    background: rgba(56, 189, 248, 0.14);
+    border: 1px solid rgba(56, 189, 248, 0.28);
+}
+
+.bot-message {
+    background: rgba(20, 184, 166, 0.14);
+    border: 1px solid rgba(20, 184, 166, 0.28);
+}
+
+/* =========================
    TABLES
 ========================= */
 

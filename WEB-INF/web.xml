@@ -39,6 +39,11 @@
     </servlet>
 
     <servlet>
+        <servlet-name>ChatServlet</servlet-name>
+        <servlet-class>controller.ChatServlet</servlet-class>
+    </servlet>
+
+    <servlet>
         <servlet-name>AdminDashboardServlet</servlet-name>
         <servlet-class>controller.AdminDashboardServlet</servlet-class>
     </servlet>
@@ -156,6 +161,11 @@
     <servlet-mapping>
         <servlet-name>OrdersServlet</servlet-name>
         <url-pattern>/orders</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ChatServlet</servlet-name>
+        <url-pattern>/chat</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
